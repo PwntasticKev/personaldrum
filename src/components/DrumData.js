@@ -1,12 +1,12 @@
 import React, { Component } from "react"
-import axios from "axios"
 import { socketConnect } from "socket.io-react"
+// import io from 'socket.io-react'
 
 class DrumData extends Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
-      hit: ["1"]
+      hit: [],
     }
   }
 
@@ -15,26 +15,22 @@ class DrumData extends Component {
   }
 
   getDrum() {
-    console.log("got it")
-    axios
-      .get("/api/drum")
-      .then(res => {
-        this.setState({
-          hit: res.data
-        })
-      })
-      .catch(console.log())
+    let { socket } = this.props
+    socket.on("hit", hits => {
+      this.setState({ hit: hits })
+    })
   }
 
+
+
   render() {
-    let socket = this.props
     return (
       <div className="DrumData">
         <div>{this.state.hit}</div>
         <button onClick={e => this.blink()}>BLINK</button>
+          
       </div>
     )
   }
 }
-
-export default DrumData
+export default socketConnect(DrumData)
