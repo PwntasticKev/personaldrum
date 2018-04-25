@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import axios from 'axios'
 // import { socketConnect } from "socket.io-react"
-import DrumData from './components/DrumData'
+import routes from './routes'
 
 class App extends Component {
 
@@ -10,7 +10,7 @@ class App extends Component {
     
     return (
       <div className="App">
-      <DrumData />
+      { routes }
       </div>
     );
   }

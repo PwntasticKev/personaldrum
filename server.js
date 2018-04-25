@@ -1,158 +1,139 @@
 const five = require('johnny-five')
 let Board = new five.Board()
-
 Board.on('ready', () => {
-  let sensor = new five.Sensor('A0')
-  const express = require('express')
-  const http = require('http')
-  const server = http.createServer()
-  const _ = require('lodash')
-
-  let io = require('socket.io')(server)
-  let app = express()
-  const port = 3005
-  let hits = [];
-  const connections = []
-  const bodyParser = require('body-parser')
+  
+  require("dotenv").config()
+   sensor = new five.Sensor('A0'),
+   express = require('express'),
+   http = require('http'),
+   server = http.createServer(),
+   _ = require('lodash'),
+   massive = require('massive'),
+   bodyParser = require('body-parser'),
+   session = require('express-session'),
+   passport = require('passport'),
+   Auth0Strategy = require('passport-auth0'),
+   cors = require('cors'),
+   { CONNECTION_STRING, 
+    SESSION_SECRET, 
+    SERVER_PORT, 
+    DOMAIN, 
+    CLIENT_ID, 
+    CLIENT_SECRET, 
+    CALLBACK_URL } = process.env
+    const app = express()
+    const io = require("socket.io")(app.listen(SERVER_PORT, () => {
+      console.log(`listening on ${SERVER_PORT}`)
+      }))
+  hits = [];
   app.use(bodyParser.json())
+  app.use(cors())
   
+  app.use(session({
+      secret: SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true
+    }))
+  app.use(passport.initialize())
+  app.use(passport.session())
+  app.use(express.static(__dirname + "/../build"))
+  
+  
+  massive(CONNECTION_STRING).then(db => {
+    app.set("db", db)
+  })
 
-  io.on("connection", (socket) => {
-    console.log("user has connected")
-    sensor.on("change", _.debounce(() => {
-      let val = sensor.scaleTo(0, 1000)
-      if (val > 1) {
-        hits.push("√ ")
+  passport.use(new Auth0Strategy(
+      {
+        domain: DOMAIN,
+        clientID: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        callbackURL: CALLBACK_URL,
+        scope: "openid profile"
+      },
+      (accessToken, refreshToken, extraParams, profile, done) => {
+        const { id, displayName, picture } = profile
+        const db = app.get("db")
+        db.find_user([id]).then( users => {
+        if ( users[0] ){
+        return done(null, users[0])
+        }
+        else { //when someone is logginG in for the first time.
+        db.create_user([displayName, picture, id]).then( createdUser => {
+        return done( null,createdUser[0].id )
+        } ) }
+        } ).catch(err => {
+            console.log(err)
+        })
+        // return(null, profile)
+        // console.log('listening?');
+      }
+    ))
+        
+
+  app.get("/auth", passport.authenticate("auth0"))
+
+  app.get("/auth/callback", passport.authenticate("auth0", {
+      successRedirect: "http://localhost:3000/#/loggedin",
+      failureRedirect: "http://localhost:3000/#/"
+    }))
+
+  passport.serializeUser(function(user, done) {
+    done(null, user)
+  })
+
+  passport.deserializeUser(function(user, done) {
+    app
+      .get("db")
+      .find_session_user([user.id])
+      .then(user => {
+        return done(null, user[0])
+      })
+  })
+
+  app.get("/auth/me", (req, res, next) => {
+    // console.log(req.user)
+    if (!req.user) {
+      return res.status(401).send("Log in required")
+    } else {
+      return res.status(200).send(req.user)
+    }
+  })
+
+  app.get("/auth/logout", (req, res) => {
+    req.logOut()
+    return res.redirect("http://localhost:3000/#/")
+  })
+
+
+
+
+
+io.on("connection", (socket) => {
+  console.log("user has connected")
+  sensor.on("change", _.debounce(() => {
+    let val = sensor.scaleTo(0, 1000)
+    if (val > 1) {
+      hits.push("√ ")
         socket.emit("hit", hits)
-        console.log(hits)
-      } 
+        // console.log(hits)
+      }
       // if (val > 5) {
-      //   hits.push('V')
-      // }
-    }, 75))
-  })
-
-  
-  server.listen(port, () => {
-    console.log('listening on blah');
+        //   hits.push('V')
+        // }
+      }, 75))
+    })
     
-  })
-  // app.get('/api/drum', (req, res) => {
-  //   res.status(200).send(hits)
-  // })
-
-//   app.listen(port, () => {
-//     console.log(`listening on port ${port}`)
-//   })
-})
-
-
-
-
-// let io = socket(server)
-//ideas tips
-//start recording stop recording
-// empty array
-
-//sockets update live!
-
-
-//   / Sortable.create(foo, {
-//     animation: 300,
-//     group: {
-//       name: "hihat",
-//       pull: "clone",
-//       revertClone: true,
-//     }
-//   });
-
-
-// Sortable.create(bar, {
-//   animation: 200,
-//   group: {
-//     name: "snare",
-//     pull: "clone",
-//     revertClone: true,
-//   },
-//   sort: false
-// });
-
-// Sortable.create(qux, {
-//   group: {
-//     name: 'qux',
-//     put: ['hihat']
-//   },
-//   animation: 100
-// });
-
-// Sortable.create(snare, {
-//   group: {
-//     name: 'snare',
-//     put: ['snare']
-//   },
-//   animation: 100
-
-//   < !DOCTYPE html >
-//     <html>
-//       <head>
-//         <meta charset="utf-8">
-//           <title>Sortable: `put: []` demo</title>
-
-//           <!-- Sortable.js -->
-//   <script src="//rubaxa.github.io/Sortable/Sortable.js"></script>
-
   
-// </head>
-//         <body>
-
-//           <ul id="foo">
-//             <div>Hi-Hat</div>
-//             <li></li>
-//             <li>x</li>
-//             <li>x x</li>
-//             <li>x x x</li>
-//             <li>x x x x</li>
-//           </ul>
-
-//           <ul id="bar">
-//             <div>Snare Drum</div>
-//             <li>o</li>
-//             <li>o o</li>
-//             <li>o o o</li>
-//             <li>o o o o</li>
-//           </ul>
-
-//           <ul id="qux">
-//             <div>hihat Here</div>
-//             <li></li>
-//           </ul>
-
-
-//           <ul id="snare">
-//             <div>snare Here</div>
-//             <li></li>
-//           </ul>
-
-
-//         </body>
-// </html>
-
-
-//css
-// ul {
-//   list - style: none;
-//   padding: 0;
-// }
-
-// li {
-//   background: #eee;
-//   margin: 0px;
-//   padding: 5px 1px;
-//   display: inline - block;
-//   background: salmon
-
-// }
-
-// .sortable - ghost {
-//   opacity: .6;
-// }
+  })
+  
+  
+  
+  // let io = socket(server)
+  //ideas tips
+  //start recording stop recording
+  // empty array
+  
+  //sockets update live!
+  
+  

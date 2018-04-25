@@ -27,8 +27,6 @@ class DrumData extends Component {
     return (
       <div className="DrumData">
         <div>{this.state.hit}</div>
-        <button onClick={e => this.blink()}>BLINK</button>
-          
       </div>
     )
   }
