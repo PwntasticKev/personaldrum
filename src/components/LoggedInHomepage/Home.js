@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { getUserInfo } from "../../ducks/reducer"
 import './Home.css'
+import "typeface-roboto"
 
 class Home extends Component {
   componentDidMount() {
@@ -10,8 +11,7 @@ class Home extends Component {
   render() {
     // const { REACT_APP_LOGIN, REACT_APP_LOGOUT } = process.env
     // const { user, user: { img } } = this.props.user
-    const user = this.props.user
-    console.log(user)
+    // const user = this.props.user
     // const profileimg = this.props.user ? <div>{this.props.user.img}</div> : <div>empty</div>
     return <section>
         <section className='container'>

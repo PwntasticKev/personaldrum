@@ -7,10 +7,16 @@
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
-  margin-bottom: 3rem; 
+  margin-bottom: 1rem; 
+  border-bottom: .25px  solid gray;
+  box-shadow: 1px 1px #FC4A1A,
+  -1em 0 0.7em #F7B733;
+  background: #4ABDAC;
+  color: white;
 }
 
 .profile {
   display: flex;
   align-items: center;
 }
+

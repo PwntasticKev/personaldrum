@@ -1,0 +1,14 @@
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 14px;
+  
+}
+
+.cards {
+  border: 1px solid gray;
+}
+
+.searchbox {
+  margin-bottom: 2rem;
+}

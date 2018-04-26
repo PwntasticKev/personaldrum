@@ -3,6 +3,7 @@ import './App.css';
 // import axios from 'axios'
 // import { socketConnect } from "socket.io-react"
 import routes from './routes'
+import "typeface-roboto"
 
 class App extends Component {
 

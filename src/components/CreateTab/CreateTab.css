@@ -1,0 +1,33 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  margin: 0px;
+  padding: 5px 1px;
+  display: inline-block;
+   
+}
+
+.sortable-ghost {
+  opacity: .3;
+}
+
+.music div {
+  border-top: 2px solid gray;
+  margin-top: 5px;
+}
+
+.notes img {
+  width: 20px;
+}
+
+.notes {
+  margin-right: 5px;
+}
+
+.music div li {
+  list-style: none;
+}

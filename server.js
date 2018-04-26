@@ -14,6 +14,7 @@ Board.on('ready', () => {
    passport = require('passport'),
    Auth0Strategy = require('passport-auth0'),
    cors = require('cors'),
+   c = './controller',
    { CONNECTION_STRING, 
     SESSION_SECRET, 
     SERVER_PORT, 
@@ -83,10 +84,7 @@ Board.on('ready', () => {
   })
 
   passport.deserializeUser(function(user, done) {
-    app
-      .get("db")
-      .find_session_user([user.id])
-      .then(user => {
+    app.get("db").find_session_user([user.id]).then(user => {
         return done(null, user[0])
       })
   })
@@ -104,6 +102,15 @@ Board.on('ready', () => {
     req.logOut()
     return res.redirect("http://localhost:3000/#/")
   })
+
+  app.get('/totaltabs/:search', (req,res,next) => {
+    const { search } = req.params 
+    const db = app.get("db")
+    db.totalTabs([search.toUpperCase()]).then(totaltabs => {
+      res.status(200).send(totaltabs)
+    })
+  })
+  
 
 
 
