@@ -1,13 +1,20 @@
 import React from "react"
 import Header1 from '../LoggedInHomepage/Header1/Header1'
+import { connect } from 'react-redux'
+import { setTempo } from '../../ducks/reducer'
 import './CreateTab.css'
 import PropTypes from "prop-types"
 import { withStyles } from "material-ui/styles"
 import AppBar from "material-ui/AppBar"
 import Tabs, { Tab } from "material-ui/Tabs"
 import Typography from "material-ui/Typography"
-import eightnote from './notesimg/8note.png'
-import sixteenth from './notesimg/16th.png'
+import Button from 'material-ui/Button'
+import Checkbox from 'material-ui/Checkbox';
+import TextField from 'material-ui/TextField';
+import snare1 from './notesimg/juansnare.svg'
+import snare2 from './notesimg/2snare.svg'
+import snare3 from './notesimg/3snare.svg'
+import snare4 from './notesimg/4snare.svg'
 
 import Sortable from 'sortablejs'
 
@@ -32,6 +39,13 @@ const styles = theme => ({
 })
 
 class ScrollableTabsButtonAuto extends React.Component {
+      state = {
+        value: 0,
+        checkedA: true,
+        checkedB: true,
+        checkedF: true,
+        opened: false,
+      }
   snareput = (snare) => {
     if (snare) {
       let options = {
@@ -58,41 +72,43 @@ class ScrollableTabsButtonAuto extends React.Component {
       Sortable.create(snare, options)
     }
   }
-
-  state = {
-    value: 0
+// will activate the method to listen for when the drum is being hit. 
+  play() {
+    console.log('play button!');
+    
   }
+
 
   handleChange = (event, value) => {
     this.setState({ value })
   }
+
+ 
+
   render() {
     const { classes } = this.props
     const { value } = this.state
 
+    const showNote = {
+      display: 'none'
+    }
+
+    
     return (
       <div className={classes.root}>
         <Header1 />
+        <div className='instructions'>
         <div>
-         
-
-          {/* <div className="container" ref={this.sortableContainersDecorator}> */}
-            {/* <div className="group">
-              <h2 className="group-title">Group 1</h2>
-              <div className="group-list" ref={this.snareput}>
-              <li></li>
-              </div>
-            </div> */}
-            {/* <div className="group">
-              <h2 className="group-title">Group 2</h2>
-              <div className="group-list" ref={this.pull}>
-                <li className="group-title">o</li>
-                <li className="group-title">o o</li>
-                <li className="group-title">o o o</li>
-                <li className="group-title">o o o o</li>
-              </div>
-            </div> */}
-          {/* </div> */}
+          instruction on how to begin. 
+        </div>
+        <div className='play-container'>
+        <div>
+        <TextField id='number' label="Set Tempo..." 
+        onChange={e => this.props.setTempo(e.target.value)}>
+        </TextField>
+          <Button onClick={this.play}>PLAY BUTTON</Button>
+        </div>
+        </div>
         </div>
         <AppBar position="static" color="default">
           <Tabs
@@ -106,38 +122,84 @@ class ScrollableTabsButtonAuto extends React.Component {
             <Tab label="Snare" />
             <Tab label="Hi-Hat" />
             <Tab label="Base Drum" />
+            <Tab label="Toms" />
             <Tab label="Crash Cymbal" />
             <Tab label="China" />
             <Tab label="Splash" />
-            <Tab label="" />
           </Tabs>
         </AppBar>
         {value === 0 && (<TabContainer><div className="group">
               <div className="group-list" ref={this.pull}>
-                <li className="notes">o</li>
-                <li className="notes"><img src={ eightnote } alt="missing"/></li>
-                <li className="notes">o o o</li>
-                <li className="notes"><img src={ sixteenth } alt=""/></li>
+                <li className="notes" id='snare1'><img src={ snare1 } alt="missing"/></li>
+                <li className="notes"><img src={ snare2 } alt="missing"/></li>
+                <li className="notes" id='snare3'><img src={ snare3 } alt="missing"/></li>
+                <li className="notes" id='snare4'><img src={ snare4 } alt=""/></li>
               </div>
             </div></TabContainer>)}
-        {value === 1 && (<TabContainer></TabContainer>)}
-        {value === 2 && (<TabContainer></TabContainer>)}
-        {value === 3 && (<TabContainer></TabContainer>)}
-        {value === 4 && (<TabContainer></TabContainer>)}
-        {value === 5 && (<TabContainer></TabContainer>)}
-        {value === 6 && (<TabContainer></TabContainer>)}
+        {value === 1 && (
+          <TabContainer>
+             <li className="notes"><img src={ snare1 } alt="missing"/></li>
+             <li className="notes"><img src={ snare2 } alt="missing"/></li>
+             <li className="notes"><img src={ snare3 } alt="missing"/></li>
+             <li className="notes"><img src={ snare4 } alt=""/></li>
+           </TabContainer>)}
+        {value === 2 && (
+          <TabContainer>
+            <li className="notes"><img src={ snare1 } alt="missing"/></li>
+            <li className="notes"><img src={ snare2 } alt="missing"/></li>
+            <li className="notes"><img src={ snare3 } alt="missing"/></li>
+            <li className="notes"><img src={ snare4 } alt=""/></li>
+          </TabContainer>)}
+        {value === 3 && (
+          <TabContainer>
+             <li className="notes"><img src={ snare1 } alt="missing"/></li>
+             <li className="notes"><img src={ snare2 } alt="missing"/></li>
+             <li className="notes"><img src={ snare3 } alt="missing"/></li>
+             <li className="notes"><img src={ snare4 } alt=""/></li>
+           </TabContainer>)}
+        {value === 4 && (
+          <TabContainer>
+             <li className="notes"><img src={ snare1 } alt="missing"/></li>
+             <li className="notes"><img src={ snare2 } alt="missing"/></li>
+             <li className="notes"><img src={ snare3 } alt="missing"/></li>
+             <li className="notes"><img src={ snare4 } alt=""/></li>
+          </TabContainer>)}
+        {value === 5 && (
+          <TabContainer>
+             <li className="notes"><img src={ snare1 } alt="missing"/></li>
+             <li className="notes"><img src={ snare2 } alt="missing"/></li>
+             <li className="notes"><img src={ snare3 } alt="missing"/></li>
+             <li className="notes"><img src={ snare4 } alt=""/></li>
+          </TabContainer>)}
+        {value === 6 && (
+          <TabContainer>
+             <li className="notes"><img src={ snare1 } alt="missing"/></li>
+             <li className="notes"><img src={ snare2 } alt="missing"/></li>
+             <li className="notes"><img src={ snare3 } alt="missing"/></li>
+             <li className="notes"><img src={ snare4 } alt=""/></li>
+          </TabContainer>)}
         
             <div>place your shwifty groove!</div>
-              <div class='music'>
-                <div class='E'></div>
-                <div class='f'></div>
-                <div class='g'></div>
-                <div class='a'></div>
-                <div class='b'></div>
-                <div className="c" ref={this.snareput}><li></li></div>
-                <div class='d'></div>
-                <div class='e'></div>
-                <div class='f'></div>
+              <div className='music'>
+              <div> <div className='E'></div></div>
+                <div className='f'></div>
+                <div className='g'></div>
+                <div>
+      
+                <div className="a" ref={this.snareput}><li></li><Checkbox onClick=''/></div>
+                </div>
+                <div className='b'></div>
+                <div className='c'></div>
+                <div className=''></div>
+                <div className='e'></div>
+                <div className='f'></div>
+              </div>
+              <div>
+                <div className='bottom-container'>
+                  <div><Button>Share</Button></div>
+                  <div><Button>Download</Button></div>
+                  <div><Button>save</Button></div>
+                </div>
               </div>
       </div>
     )
@@ -148,4 +210,11 @@ ScrollableTabsButtonAuto.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(ScrollableTabsButtonAuto)
+function mapStateToProps(state) {
+  return {
+    tempo: state.tempo
+  }
+}
+
+
+export default connect(mapStateToProps, { setTempo })(withStyles(styles)(ScrollableTabsButtonAuto));

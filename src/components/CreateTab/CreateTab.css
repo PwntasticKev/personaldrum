@@ -4,7 +4,6 @@ ul {
 }
 
 li {
-  background: #eee;
   margin: 0px;
   padding: 5px 1px;
   display: inline-block;
@@ -15,13 +14,28 @@ li {
   opacity: .3;
 }
 
-.music div {
+.instructions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.play-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.f, .a, .c, .e, .f {
   border-top: 2px solid gray;
-  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: center;
 }
 
 .notes img {
-  width: 20px;
+  width: 18.25px;
 }
 
 .notes {
@@ -30,4 +44,16 @@ li {
 
 .music div li {
   list-style: none;
+}
+
+#snare1 img {
+  width: 12px;
+}
+
+#snare3 img {
+  width: 31px;
+}
+
+#snare4 img {
+  width: 44px;
 }

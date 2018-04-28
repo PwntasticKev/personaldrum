@@ -37,16 +37,16 @@ class SwipeableTemporaryDrawer extends React.Component {
     const fullList = <div className={classes.fullList}>
         <List>
           <Link to="/loggedin">
-            <div className={classes.stuff}>Home</div>
+            <Button className={classes.stuff}>Home</Button>
           </Link>
           <Link to="/profile">
-            <div className={classes.stuff}>Profile</div>
+            <Button className={classes.stuff}>Profile</Button>
           </Link>
           <Link to="/search">
-            <div className={classes.stuff}>Shwifty Search</div>
+            <Button className={classes.stuff}>Shwifty Search</Button>
           </Link>
           <Link to="/createtab">
-            <div className={classes.stuff}>CreateTab</div>
+            <Button className={classes.stuff}>CreateTab</Button>
           </Link>
         </List>
         {/* <Divider /> */}

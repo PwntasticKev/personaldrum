@@ -5,12 +5,14 @@ const initialState = {
   user: null,
   totalTabs: [],
   searchVal: '',
+  tempo: '',
 }
 
 // action types
 const GET_USER_INFO = "GET_USER_INFO"
 const GET_TABS = 'GET_TABS'
 const UPDATE_SEARCH_VAL = "UPDATE_SEARCH_VAL"
+const SET_TEMPO = 'SET_TEMPO'
 
 // action creators
 export function getUserInfo() {
@@ -35,6 +37,13 @@ export function getTabs(e) {
   }
 }
 
+export function setTempo(tempo) {
+  return {
+    type: SET_TEMPO,
+    payload: tempo
+  }
+}
+
 export function searchVal(val) {
   return {
     type: UPDATE_SEARCH_VAL,
@@ -49,10 +58,16 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_USER_INFO + "_FULFILLED":
       return Object.assign({}, state, { user: action.payload })
+
     case GET_TABS + "_FULFILLED":
     console.log(action.payload);
-    
     return Object.assign({}, state, { totalTabs: action.payload })
+
+    case SET_TEMPO:
+      console.log(action.payload);
+      
+      return Object.assign({}, state, {tempo: action.payload})
+
     default:
       return state
   }

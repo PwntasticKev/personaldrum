@@ -38,7 +38,7 @@ class Header1 extends Component {
               <SwipeableTemporaryDrawer />
             </div>
             <div>
-              <a href="/loggedin">SHWIFTY LOGO</a>
+              <a href="/">SHWIFTY LOGO</a>
             </div>
             <div className="profile">
               <input type="text" placeholder="Search..." onKeyDown={e => this.search(e)} onChange={e => this.props.searchVal(e.target.value)}/>
