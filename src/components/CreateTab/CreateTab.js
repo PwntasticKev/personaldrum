@@ -15,6 +15,13 @@ import snare1 from './notesimg/juansnare.svg'
 import snare2 from './notesimg/2snare.svg'
 import snare3 from './notesimg/3snare.svg'
 import snare4 from './notesimg/4snare.svg'
+import hihat2 from './notesimg/2hihat.svg'
+import hihat3 from './notesimg/3hihat.svg'
+import hihat4 from './notesimg/4hihat.svg'
+import crash from './notesimg/crash.svg'
+import note from './notesimg/note.svg'
+
+import n from './pullputlist'
 
 import Sortable from 'sortablejs'
 
@@ -44,7 +51,6 @@ class ScrollableTabsButtonAuto extends React.Component {
         checkedA: true,
         checkedB: true,
         checkedF: true,
-        opened: false,
       }
   snareput = (snare) => {
     if (snare) {
@@ -72,6 +78,34 @@ class ScrollableTabsButtonAuto extends React.Component {
       Sortable.create(snare, options)
     }
   }
+
+  hihatput = (hihat) => {
+    if (hihat) {
+      let options = {
+        group: {
+          name: 'hihat',
+        }
+      };
+      Sortable.create(hihat, options);
+    }
+  }
+  
+
+  pullhihat = hihat => {
+    // check if backing instance not null
+    if (hihat) {
+      let options = {
+        draggable: "li", // Specifies which items inside the element should be sortable
+        group: {
+          name: "hihat",
+          pull: "clone",
+          revertClone: true,
+  }
+      }
+      Sortable.create(hihat, options)
+    }
+  }
+
 // will activate the method to listen for when the drum is being hit. 
   play() {
     console.log('play button!');
@@ -123,25 +157,25 @@ class ScrollableTabsButtonAuto extends React.Component {
             <Tab label="Hi-Hat" />
             <Tab label="Base Drum" />
             <Tab label="Toms" />
-            <Tab label="Crash Cymbal" />
-            <Tab label="China" />
-            <Tab label="Splash" />
+            <Tab label="Cymbals" />
           </Tabs>
         </AppBar>
         {value === 0 && (<TabContainer><div className="group">
               <div className="group-list" ref={this.pull}>
                 <li className="notes" id='snare1'><img src={ snare1 } alt="missing"/></li>
-                <li className="notes"><img src={ snare2 } alt="missing"/></li>
+                <li className="notes" id='snare2'><img src={ snare2 } alt="missing"/></li>
                 <li className="notes" id='snare3'><img src={ snare3 } alt="missing"/></li>
                 <li className="notes" id='snare4'><img src={ snare4 } alt=""/></li>
               </div>
             </div></TabContainer>)}
         {value === 1 && (
           <TabContainer>
-             <li className="notes"><img src={ snare1 } alt="missing"/></li>
-             <li className="notes"><img src={ snare2 } alt="missing"/></li>
-             <li className="notes"><img src={ snare3 } alt="missing"/></li>
-             <li className="notes"><img src={ snare4 } alt=""/></li>
+          <div className="group-list" ref={this.pullhihat}>
+             <li className="notes" id='snare1'><img src={ snare1 } alt="notthere"/></li>
+             <li className="notes" id='hihat2'><img src={ hihat2 } alt="missing"/></li>
+             <li className="notes" id='snare3'><img src={ hihat3 } alt="missing"/></li>
+             <li className="notes" id='snare4'><img src={ hihat4 } alt=""/></li>
+             </div>
            </TabContainer>)}
         {value === 2 && (
           <TabContainer>
@@ -152,49 +186,40 @@ class ScrollableTabsButtonAuto extends React.Component {
           </TabContainer>)}
         {value === 3 && (
           <TabContainer>
-             <li className="notes"><img src={ snare1 } alt="missing"/></li>
-             <li className="notes"><img src={ snare2 } alt="missing"/></li>
-             <li className="notes"><img src={ snare3 } alt="missing"/></li>
-             <li className="notes"><img src={ snare4 } alt=""/></li>
+                <li className="notes" id='snare1'><img src={ snare1 } alt="missing"/></li>
+                <li className="notes" id='snare2'><img src={ snare2 } alt="missing"/></li>
+                <li className="notes" id='snare3'><img src={ snare3 } alt="missing"/></li>
+                <li className="notes" id='snare4'><img src={ snare4 } alt=""/></li>
            </TabContainer>)}
         {value === 4 && (
           <TabContainer>
-             <li className="notes"><img src={ snare1 } alt="missing"/></li>
-             <li className="notes"><img src={ snare2 } alt="missing"/></li>
+             <li className="notes" id='snare1'><img src={ note } alt="missing"/></li>
+             <li className="notes" id='snare1'><img src={ crash } alt="missing"/></li>
              <li className="notes"><img src={ snare3 } alt="missing"/></li>
              <li className="notes"><img src={ snare4 } alt=""/></li>
           </TabContainer>)}
-        {value === 5 && (
-          <TabContainer>
-             <li className="notes"><img src={ snare1 } alt="missing"/></li>
-             <li className="notes"><img src={ snare2 } alt="missing"/></li>
-             <li className="notes"><img src={ snare3 } alt="missing"/></li>
-             <li className="notes"><img src={ snare4 } alt=""/></li>
-          </TabContainer>)}
-        {value === 6 && (
-          <TabContainer>
-             <li className="notes"><img src={ snare1 } alt="missing"/></li>
-             <li className="notes"><img src={ snare2 } alt="missing"/></li>
-             <li className="notes"><img src={ snare3 } alt="missing"/></li>
-             <li className="notes"><img src={ snare4 } alt=""/></li>
-          </TabContainer>)}
+       
         
             <div>place your shwifty groove!</div>
               <div className='music'>
-              <div> <div className='E'></div></div>
-                <div className='f'></div>
-                <div className='g'></div>
+              <div className='china' ref={this.crashput}><li></li></div>
+              <div className='splash' ref={this.crashput}><li></li></div>
+              <div className='crash2' ref={this.crashput}><li></li></div>
+              <div className='crash' ref={this.crashput}><li></li></div>
+                <div className='hihat' ref={this.hihatput}><li></li></div>
                 <div>
-      
-                <div className="a" ref={this.snareput}><li></li><Checkbox onClick=''/></div>
+                <div className="snare" ref={this.snareput}><li></li></div>
                 </div>
-                <div className='b'></div>
-                <div className='c'></div>
-                <div className=''></div>
-                <div className='e'></div>
-                <div className='f'></div>
               </div>
               <div>
+              <div className="bar">
+                <div className='e'></div>
+                <div className='g'></div>
+                <div className='b'></div>
+                <div className='d'></div>
+                <div className='f'></div>
+              </div>
+
                 <div className='bottom-container'>
                   <div><Button>Share</Button></div>
                   <div><Button>Download</Button></div>

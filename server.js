@@ -3,6 +3,10 @@ let Board = new five.Board()
 Board.on('ready', () => {
   
   require("dotenv").config()
+//aws
+  const AWS = require('aws-sdk')
+  const S3 = require('./s3')
+//aws
    sensor = new five.Sensor('A0'),
    express = require('express'),
    http = require('http'),
@@ -96,6 +100,7 @@ Board.on('ready', () => {
     } else {
       return res.status(200).send(req.user)
     }
+    
   })
 
   app.get("/auth/logout", (req, res) => {
@@ -104,6 +109,8 @@ Board.on('ready', () => {
   })
 
   app.get('/totaltabs/:search', (req,res,next) => {
+    console.log('this', req.session);
+    
     const { search } = req.params 
     const db = app.get("db")
     db.totalTabs([search.toUpperCase()]).then(totaltabs => {
@@ -111,6 +118,17 @@ Board.on('ready', () => {
     })
   })
   
+
+  // AWS3 stuff
+
+
+
+//mainjs
+S3(app)
+
+
+
+  //aws3 stuff
 
 
 

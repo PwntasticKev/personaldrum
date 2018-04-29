@@ -5,9 +5,14 @@ ul {
 
 li {
   margin: 0px;
-  padding: 5px 1px;
+  padding: 1px 1px;
   display: inline-block;
    
+}
+
+.group, .group-list {
+  display: flex;
+  list-style-type: none;
 }
 
 .sortable-ghost {
@@ -24,9 +29,14 @@ li {
   justify-content: flex-end;
 }
 
-.f, .a, .c, .e, .f {
+.bar {
+  position: relative;
+  top: -2.6rem;
+}
+
+.e, .g, .b, .d, .f {
   border-top: 2px solid gray;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .bottom-container {
@@ -34,9 +44,6 @@ li {
   justify-content: center;
 }
 
-.notes img {
-  width: 18.25px;
-}
 
 .notes {
   margin-right: 5px;
@@ -47,13 +54,20 @@ li {
 }
 
 #snare1 img {
-  width: 12px;
+  width: 15px;
 }
 
+#snare2 img {
+  width: 26px;
+}
 #snare3 img {
-  width: 31px;
+  width: 44px;
 }
 
 #snare4 img {
-  width: 44px;
+  width: 65px;
+}
+
+#hihat2 img {
+  width: 29px;
 }
