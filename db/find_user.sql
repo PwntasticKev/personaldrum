@@ -1,3 +1,3 @@
 SELECT * 
 FROM users
-WHERE users.authid = $1;
+WHERE authid = $1;

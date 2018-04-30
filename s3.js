@@ -31,7 +31,7 @@ function uploadPhoto(req, res) {
         res.status(500).send(err)
       } else {
         const db = req.app.get("db")
-        db.imglinks([req.session.passport.user, data.Location]).then(images => {
+        db.imglinks([req.user.id, data.Location]).then(images => {
           res.status(200).send(images[0])
 
         })

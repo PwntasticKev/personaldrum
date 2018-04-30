@@ -1,6 +1,7 @@
 .avatar {
   width: 40px;
-  border-radius: 90%;
+  border-radius: 90%;  
+   margin-left: 3rem;
 }
 
 .info-container {
@@ -8,15 +9,16 @@
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   margin-bottom: 1rem; 
-  border-bottom: .25px  solid gray;
-  box-shadow: 1px 1px #FC4A1A,
-  -1em 0 0.7em #F7B733;
-  background: #4ABDAC;
-  color: white;
+ box-shadow: -1px 1px 13px 0px rgba(255,59,63,1);
+  /* background: #EFEFEF; */
+  background: #CAEBF2;
+  color: #FF3B3F;
+  height: 3.5rem;
 }
 
 .profile {
   display: flex;
   align-items: center;
+  margin-left: 2rem;
 }
 

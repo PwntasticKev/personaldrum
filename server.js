@@ -65,7 +65,7 @@ Board.on('ready', () => {
         }
         else { //when someone is logginG in for the first time.
         db.create_user([displayName, picture, id]).then( createdUser => {
-        return done( null,createdUser[0].id )
+        return done( null,createdUser[0] )
         } ) }
         } ).catch(err => {
             console.log(err)
@@ -89,6 +89,7 @@ Board.on('ready', () => {
 
   passport.deserializeUser(function(user, done) {
     app.get("db").find_session_user([user.id]).then(user => {
+      
         return done(null, user[0])
       })
   })

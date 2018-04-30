@@ -5,6 +5,7 @@ import { getUserInfo, getTabs, searchVal } from "../../../ducks/reducer"
 import "./Header1.css"
 import SwipeableTemporaryDrawer from './MenuButton'
 import { Redirect } from 'react-router-dom'
+import TextField from 'material-ui/TextField';
 // import axios from 'axios'
 
 class Header1 extends Component {
@@ -41,7 +42,7 @@ class Header1 extends Component {
               <a href="/">SHWIFTY LOGO</a>
             </div>
             <div className="profile">
-              <input type="text" placeholder="Search..." onKeyDown={e => this.search(e)} onChange={e => this.props.searchVal(e.target.value)}/>
+              <TextField placeholder='Search Tabs...'><input type="text" placeholder="Search..." onKeyDown={e => this.search(e)} onChange={e => this.props.searchVal(e.target.value)}/></TextField>
               <img alt="" className="avatar" src={this.props.user.img} />
             </div>
           </div> : <div className="info-container">

@@ -27,11 +27,12 @@ li {
 .play-container {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 1rem;
 }
 
 .bar {
-  position: relative;
-  top: -2.6rem;
+  /* position: relative;
+  top: -2.6rem; */
 }
 
 .e, .g, .b, .d, .f {
@@ -70,4 +71,30 @@ li {
 
 #hihat2 img {
   width: 29px;
+}
+
+.MuiTabs-flexContainer-89 {
+justify-content: center
+}
+
+.MuiTabs-flexContainer-89 {
+  /* background: #A9A9A9; */
+  background: #EFEFEF;
+}
+
+.MuiTab-wrapper-106 {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: #FF3B3F;
+}
+
+.MuiTab-textColorPrimary-101.MuiTab-selected-103 {
+  color: #FF3B3F !important;
+}
+
+.TabIndicator-colorPrimary-111  {
+   background-color: #FF3B3F !important;
 }

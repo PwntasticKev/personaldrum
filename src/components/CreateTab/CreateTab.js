@@ -21,6 +21,8 @@ import hihat4 from './notesimg/4hihat.svg'
 import crash from './notesimg/crash.svg'
 import note from './notesimg/note.svg'
 
+import SaveTab from './saveTab'
+
 import n from './pullputlist'
 
 import Sortable from 'sortablejs'
@@ -211,7 +213,6 @@ class ScrollableTabsButtonAuto extends React.Component {
                 <div className="snare" ref={this.snareput}><li></li></div>
                 </div>
               </div>
-              <div>
               <div className="bar">
                 <div className='e'></div>
                 <div className='g'></div>
@@ -220,10 +221,11 @@ class ScrollableTabsButtonAuto extends React.Component {
                 <div className='f'></div>
               </div>
 
+              <div>
                 <div className='bottom-container'>
-                  <div><Button>Share</Button></div>
-                  <div><Button>Download</Button></div>
-                  <div><Button>save</Button></div>
+                  <Button>Share</Button>
+                  <Button>Download</Button>
+                  <Button><SaveTab/></Button>
                 </div>
               </div>
       </div>

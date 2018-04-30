@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Button from 'material-ui/Button'
+// import SaveTabButton from './SaveTabButton'
+
 
 function sendToback(photo){
   console.log(photo)
   return axios.post('/api/photoUpload', photo)
 }
 
-export default class  Profile extends Component {
+ class Profile extends Component {
   constructor(){
     super()
 
@@ -35,10 +38,10 @@ handlePhoto(event){
 }
 
 sendPhoto(event){
-    event.preventDefault()
+    // event.preventDefault()
 
     sendToback(this.state).then(response => {
-      
+
         console.log(response.data)
     })
 }
@@ -47,14 +50,17 @@ render(){
   // this.state.file && console.log(this.state.photo)
   return (
       <div className="FileUpload">
-          <input type="file" onChange={this.handlePhoto}/>
+        <input type="file" onChange={this.handlePhoto}/>
           <br/>
           {
           this.state.file &&
           <img src={this.state.file} alt="" className="file-preview"/>  
           }
-          <button onClick={this.sendPhoto}></button>
+          {/* <SaveTabButton sendPhoto={this.sendPhoto}/> */}
+          <Button onClick={this.sendPhoto}>SAVE TABB</Button>
       </div>
   )
 }
 }
+
+export default Profile
