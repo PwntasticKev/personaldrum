@@ -6,6 +6,9 @@ const initialState = {
   totalTabs: [],
   searchVal: '',
   tempo: '',
+  songName: '',
+  albumName: '',
+  description: ''
 }
 
 // action types
@@ -13,6 +16,9 @@ const GET_USER_INFO = "GET_USER_INFO"
 const GET_TABS = 'GET_TABS'
 const UPDATE_SEARCH_VAL = "UPDATE_SEARCH_VAL"
 const SET_TEMPO = 'SET_TEMPO'
+const SONGNAME = 'SONG_NAME',
+      ALBUM_NAME = 'ALBUM_NAME',
+      DESCRIPTION = 'DESCRIPTION'
 
 // action creators
 export function getUserInfo() {
@@ -26,6 +32,8 @@ export function getUserInfo() {
     payload: userInfo
   }
 }
+
+
 
 export function getTabs(e) {
   const tabs = axios.get(`/totaltabs/${e}`).then(res => {

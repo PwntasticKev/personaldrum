@@ -73,22 +73,27 @@ li {
   width: 29px;
 }
 
-.MuiTabs-flexContainer-89 {
-justify-content: center
+.MuiTabs-flexContainer-110 {
+justify-content: center !important;
+}
+
+.MuiTabs-flexContaine-110 {
+  display: flex;
+  justify-content: center !important;
 }
 
 .MuiTabs-flexContainer-89 {
   /* background: #A9A9A9; */
-  background: #EFEFEF;
+  background: #EFEFEF !important;
 }
 
 .MuiTab-wrapper-106 {
   width: 100%;
   display: inline-flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  color: #FF3B3F;
+  align-items: center !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  color: #FF3B3F !important;
 }
 
 .MuiTab-textColorPrimary-101.MuiTab-selected-103 {

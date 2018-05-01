@@ -110,25 +110,25 @@ Board.on('ready', () => {
   })
 
   app.get('/totaltabs/:search', (req,res,next) => {
-    console.log('this', req.session);
-    
     const { search } = req.params 
     const db = app.get("db")
     db.totalTabs([search.toUpperCase()]).then(totaltabs => {
       res.status(200).send(totaltabs)
     })
   })
+
+  // app.post('/drumtabs', (req,res,next) => {
+  //   const db = app.get('db')
+  //   const {file, filename, filetype, songame, albumName, description} = req.body
+  //   db.create_tab([userid, songname, songimg, albumName, description]).then(newTab => {
+  //     res.status(200).send(newTab)
+  //   })
+  // })
   
 
   // AWS3 stuff
-
-
-
 //mainjs
 S3(app)
-
-
-
   //aws3 stuff
 
 

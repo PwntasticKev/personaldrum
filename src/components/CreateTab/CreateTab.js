@@ -44,8 +44,13 @@ const styles = theme => ({
     flexGrow: 1,
     width: "100%",
     backgroundColor: theme.palette.background.paper
+  },
+  color: {
+    color: 'red',
   }
 })
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
 class ScrollableTabsButtonAuto extends React.Component {
       state = {
@@ -119,6 +124,8 @@ class ScrollableTabsButtonAuto extends React.Component {
     this.setState({ value })
   }
 
+
+
  
 
   render() {
@@ -146,14 +153,14 @@ class ScrollableTabsButtonAuto extends React.Component {
         </div>
         </div>
         </div>
-        <AppBar position="static" color="default">
+        <AppBar position="center" color="default" className={classes.appBarContainer}>
           <Tabs
             value={value}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            scrollable
-            scrollButtons="auto"
+            // indicatorColor="primary" 
+            className = {classes.color}
+            // scrollable
+            // scrollButtons="auto"
           >
             <Tab label="Snare" />
             <Tab label="Hi-Hat" />
@@ -225,7 +232,7 @@ class ScrollableTabsButtonAuto extends React.Component {
                 <div className='bottom-container'>
                   <Button>Share</Button>
                   <Button>Download</Button>
-                  <Button><SaveTab/></Button>
+                  <SaveTab/>
                 </div>
               </div>
       </div>

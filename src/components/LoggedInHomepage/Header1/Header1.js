@@ -34,7 +34,8 @@ class Header1 extends Component {
     return <div>
         { this.state.isSearching ? <Redirect to="/search" /> : null}
 
-        {this.props.user ? <div className="info-container">
+        {/* {this.props.user ?  */}
+        <div className="info-container">
             <div>
               <SwipeableTemporaryDrawer />
             </div>
@@ -43,14 +44,16 @@ class Header1 extends Component {
             </div>
             <div className="profile">
               <TextField placeholder='Search Tabs...'><input type="text" placeholder="Search..." onKeyDown={e => this.search(e)} onChange={e => this.props.searchVal(e.target.value)}/></TextField>
-              <img alt="" className="avatar" src={this.props.user.img} />
+              <img alt="" className="avatar" src={this.props.user && this.props.user.img} />
             </div>
-          </div> : <div className="info-container">
+          </div> 
+          {/* : 
+          <div className="info-container">
             <h1>SIGN IN DOE</h1>
-            <Link to="/loggedin">
+            <Link to="/">
               <button>Log in</button>
             </Link>
-          </div>}
+          </div>} */}
       </div>
   }
 }
