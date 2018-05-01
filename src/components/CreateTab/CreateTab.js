@@ -46,7 +46,13 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   },
   color: {
-    color: 'red',
+    backgroundColor: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    color: '#FF3B3F'
+  },
+  appBarContainer: {
+    boxShadow: 'none'
   }
 })
 

@@ -73,7 +73,7 @@ li {
   width: 29px;
 }
 
-.MuiTabs-flexContainer-110 {
+/* .MuiTabs-flexContainer-110 {
 justify-content: center !important;
 }
 
@@ -83,7 +83,7 @@ justify-content: center !important;
 }
 
 .MuiTabs-flexContainer-89 {
-  /* background: #A9A9A9; */
+  background: #A9A9A9;
   background: #EFEFEF !important;
 }
 
@@ -102,4 +102,4 @@ justify-content: center !important;
 
 .TabIndicator-colorPrimary-111  {
    background-color: #FF3B3F !important;
-}
+} */
