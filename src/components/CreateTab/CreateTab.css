@@ -30,10 +30,10 @@ li {
   margin-bottom: 1rem;
 }
 
-.bar {
-  /* position: relative;
-  top: -2.6rem; */
-}
+ /* .bar {
+   position: relative;
+  top: -2.6rem; 
+ }  */
 
 .e, .g, .b, .d, .f {
   border-top: 2px solid gray;

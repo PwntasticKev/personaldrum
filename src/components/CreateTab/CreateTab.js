@@ -21,11 +21,21 @@ import hihat4 from './notesimg/4hihat.svg'
 import crash from './notesimg/crash.svg'
 import note from './notesimg/note.svg'
 
+import base1 from './notesimg/base1.svg'
+import base2 from './notesimg/base2.svg'
+import base3 from './notesimg/base3.svg'
+import base4 from './notesimg/base4.svg'
+import znote from './notesimg/znote.svg'
+import crashnote from './notesimg/crashnote.svg'
+import snareroll from './notesimg/snareroll.svg'
+import choke from './notesimg/choke.svg'
+import snarefast3 from './notesimg/quicktriple.svg'
+import snarefast4 from './notesimg/quickquad.svg'
+
 import SaveTab from './saveTab'
-
 import n from './pullputlist'
-
 import Sortable from 'sortablejs'
+
 
 function TabContainer(props) {
   return (
@@ -237,7 +247,6 @@ class ScrollableTabsButtonAuto extends React.Component {
               <div>
                 <div className='bottom-container'>
                   <Button>Share</Button>
-                  <Button>Download</Button>
                   <SaveTab/>
                 </div>
               </div>

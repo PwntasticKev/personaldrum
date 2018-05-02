@@ -30,7 +30,7 @@ render() {
       </div>
      </div>
     })
-    return <div>
+    return <div className='main-container-search'>
         <Header1 />
         <div>
           Search For Grooves
