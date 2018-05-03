@@ -40,7 +40,7 @@ class SwipeableTemporaryDrawer extends React.Component {
           <Link to="/loggedin">
             <Button className={classes.stuff}>Home</Button>
           </Link>
-          <Link to="/profile">
+          <Link to="/arduino">
             <Button className={classes.stuff}>Profile</Button>
           </Link>
           <Link to="/search">

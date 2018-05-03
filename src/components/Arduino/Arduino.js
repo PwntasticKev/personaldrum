@@ -7,7 +7,7 @@ import Download from '@axetroy/react-download';
 const element = document.createElement('div');
 document.body.appendChild(element);
 
-class Profile extends React.Component {
+class Arduino extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -78,5 +78,5 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default Arduino
 // render(<Profile />, element);
