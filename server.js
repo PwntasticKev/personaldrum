@@ -30,7 +30,7 @@ Board.on('ready', () => {
     const io = require("socket.io")(app.listen(SERVER_PORT, () => {
       console.log(`listening on ${SERVER_PORT}`)
       }))
-  hits = [];
+  hits = []; // arduino hits array
   app.use(bodyParser.json())
   app.use(cors())
   
@@ -139,15 +139,15 @@ io.on("connection", (socket) => {
   console.log("user has connected")
   sensor.on("change", _.debounce(() => {
     let val = sensor.scaleTo(0, 1000)
-    if (val > 1) {
+    if (val > 0.2) {
       hits.push("√ ")
         socket.emit("hit", hits)
-        // console.log(hits)
+        console.log(hits)
       }
       // if (val > 5) {
         //   hits.push('V')
         // }
-      }, 75))
+      }, 65))
     })
     
   

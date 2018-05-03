@@ -1,0 +1,105 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 0px;
+  padding: 1px 1px;
+  display: inline-block;
+   
+}
+
+.group, .group-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.sortable-ghost {
+  opacity: .3;
+}
+
+.instructions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.play-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+ /* .bar {
+   position: relative;
+  top: -2.6rem; 
+ }  */
+
+.e, .g, .b, .d, .f {
+  border-top: 2px solid gray;
+  margin-bottom: 10px;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.notes {
+  margin-right: 5px;
+}
+
+.music div li {
+  list-style: none;
+}
+
+#snare1 img {
+  width: 15px;
+}
+
+#snare2 img {
+  width: 26px;
+}
+#snare3 img {
+  width: 44px;
+}
+
+#snare4 img {
+  width: 65px;
+}
+
+#hihat2 img {
+  width: 29px;
+}
+
+/* .MuiTabs-flexContainer-110 {
+justify-content: center !important;
+}
+
+.MuiTabs-flexContaine-110 {
+  display: flex;
+  justify-content: center !important;
+}
+
+.MuiTabs-flexContainer-89 {
+  background: #A9A9A9;
+  background: #EFEFEF !important;
+}
+
+.MuiTab-wrapper-106 {
+  width: 100%;
+  display: inline-flex;
+  align-items: center !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  color: #FF3B3F !important;
+}
+
+.MuiTab-textColorPrimary-101.MuiTab-selected-103 {
+  color: #FF3B3F !important;
+}
+
+.TabIndicator-colorPrimary-111  {
+   background-color: #FF3B3F !important;
+} */

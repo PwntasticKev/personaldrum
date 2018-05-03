@@ -12,11 +12,14 @@ class DrumData extends Component {
 
   componentDidMount() {
     this.getDrum()
+    console.log('iwork');
+    
   }
 
   getDrum() {
     let { socket } = this.props
     socket.on("hit", hits => {
+      if (hits)
       this.setState({ hit: hits })
     })
   }
