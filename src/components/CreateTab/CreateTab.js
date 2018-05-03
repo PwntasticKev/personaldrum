@@ -20,7 +20,6 @@ import hihat3 from './notesimg/3hihat.svg'
 import hihat4 from './notesimg/4hihat.svg'
 import crash from './notesimg/crash.svg'
 import note from './notesimg/note.svg'
-
 import base1 from './notesimg/base1.svg'
 import base2 from './notesimg/base2.svg'
 import base3 from './notesimg/base3.svg'
@@ -31,11 +30,8 @@ import snareroll from './notesimg/snareroll.svg'
 import choke from './notesimg/choke.svg'
 import snarefast3 from './notesimg/quicktriple.svg'
 import snarefast4 from './notesimg/quickquad.svg'
-
 import SaveTab from './saveTab'
-import n from './pullputlist'
 import Sortable from 'sortablejs'
-
 
 function TabContainer(props) {
   return (
@@ -135,14 +131,10 @@ class ScrollableTabsButtonAuto extends React.Component {
     
   }
 
-
   handleChange = (event, value) => {
     this.setState({ value })
   }
 
-
-
- 
 
   render() {
     const { classes } = this.props
@@ -191,6 +183,15 @@ class ScrollableTabsButtonAuto extends React.Component {
                 <li className="notes" id='snare2'><img src={ snare2 } alt="missing"/></li>
                 <li className="notes" id='snare3'><img src={ snare3 } alt="missing"/></li>
                 <li className="notes" id='snare4'><img src={ snare4 } alt=""/></li>
+             
+              <div className="extrasnare" ref={this.pull}>
+              {/* <div className="snareextras"> */}
+                  <li className="notes" id='snare1'><img src={ snareroll } alt="missing"/></li>
+                  <li className="notes" id='snare4'><img src={ snarefast3 } alt="missing"/></li>
+                  <li className="notes" id='snare3'><img src={ snarefast3 } alt="missing"/></li>
+                  <li className="notes" id='snare5'><img src={ snarefast4 } alt="missing"/></li>
+              {/* </div> */}
+              </div>
               </div>
             </div></TabContainer>)}
         {value === 1 && (
@@ -226,6 +227,7 @@ class ScrollableTabsButtonAuto extends React.Component {
        
         
             <div>place your shwifty groove!</div>
+            <div id='sheetMusic'>
               <div className='music'>
               <div className='china' ref={this.crashput}><li></li></div>
               <div className='splash' ref={this.crashput}><li></li></div>
@@ -235,13 +237,14 @@ class ScrollableTabsButtonAuto extends React.Component {
                 <div>
                 <div className="snare" ref={this.snareput}><li></li></div>
                 </div>
-              </div>
               <div className="bar">
                 <div className='e'></div>
                 <div className='g'></div>
                 <div className='b'></div>
                 <div className='d'></div>
                 <div className='f'></div>
+              </div>
+              </div>
               </div>
 
               <div>

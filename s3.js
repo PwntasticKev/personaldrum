@@ -9,7 +9,8 @@ AWS.config.update({
 const S3 = new AWS.S3()
 
 function uploadPhoto(req, res) {
-  // let { photo, songName, albumName, description } = req.body
+  console.log('this', req);
+  
   // console.log('photo in back', req.body.filename, process.env.AWS_ACCESSKEY) // remove this before upload.. dont console log your access key
   let photo = req.body,
       buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ""), 'base64'),
@@ -24,7 +25,9 @@ function uploadPhoto(req, res) {
   console.log(buf)
 
   S3.upload(params, (err, data) => {
-  let { photo, songName, albumName, description } = req.body
+    console.log('s3',req);
+    
+  let { photo, songName, albumName, description, sheeturl } = req.body
     
       console.log(err, data)
       // console.log('this', req.users.id) // with turnary
@@ -35,7 +38,9 @@ function uploadPhoto(req, res) {
       } else {
         const db = req.app.get("db")
         db.imglinks([req.user.id, data.Location]).then(url => {
-          db.create_tab([req.user.id, songName, url[0].imgurl, albumName, description])
+          console.log(description, sheeturl, 'up!');
+          
+          db.create_tab([req.user.id, songName, url[0].imgurl, albumName, description, sheeturl])
           res.status(200).send('newtab!')
         })
       }
@@ -43,6 +48,8 @@ function uploadPhoto(req, res) {
 }
 
 module.exports = function (app) {
+  console.log('S3 app!!!!!');
+  
   app.post('/api/uploadPhoto', uploadPhoto)
 }
 

@@ -30,7 +30,7 @@ class Profile extends React.Component {
     
     
     html2canvas(this.state.element[0]).then(canvas => {
-      let url = canvas.toDataURL() 
+      let url = canvas.toDataURL('image/png') 
       console.log(url);
       this.setState({
         url: url
@@ -54,7 +54,10 @@ class Profile extends React.Component {
         console.log(this.state.element[0])
       }}>buttin</button>
 
-      <div>test</div>
+      <div>
+      url below
+        <img src={this.state.url} alt=""/>
+      </div>
       <Download file="test.png" content={this.state.url}>
           <button type="button">Click and Download file</button>
         </Download>
