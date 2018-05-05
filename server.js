@@ -151,7 +151,7 @@ return true
 
 })
               
-              socket.emit("hit", recentHits)
+     socket.emit("hit", recentHits)
       console.log('this is the hit',hit);
       console.log('this is the recent hit',recentHits);
         
