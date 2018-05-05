@@ -6,7 +6,7 @@ class DrumData extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hit: [],
+      hit: [], 
     }
   }
 
@@ -15,21 +15,49 @@ class DrumData extends Component {
     console.log('iwork');
     
   }
+//64 divs with a map
+//if hit change 0 div to 1
+// 
 
+  
   getDrum() {
-    let { socket } = this.props
-    socket.on("hit", hits => {
-      if (hits)
-      this.setState({ hit: hits })
-    })
+      let { socket } = this.props
+      socket.on("hit", recentHits => {
+        this.setState({ hit: recentHits })
+        //if 1 then 1/4 note
+        //if 2 then half note
+        
+      })
   }
 
 
+  
 
   render() {
     return (
       <div className="DrumData">
         <div>{this.state.hit}</div>
+        <button onClick={this.resetHits}>reset hits</button>
+        <button onClick={this.listening}>reset hits</button>
+        <div className="measure">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        
       </div>
     )
   }

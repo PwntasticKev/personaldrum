@@ -30,7 +30,7 @@ Board.on('ready', () => {
     const io = require("socket.io")(app.listen(SERVER_PORT, () => {
       console.log(`listening on ${SERVER_PORT}`)
       }))
-  hits = []; // arduino hits array
+  let hit; // arduino hits array
   app.use(bodyParser.json())
   app.use(cors())
   
@@ -116,42 +116,178 @@ Board.on('ready', () => {
       res.status(200).send(totaltabs)
     })
   })
-
-  // app.post('/drumtabs', (req,res,next) => {
-  //   const db = app.get('db')
-  //   const {file, filename, filetype, songame, albumName, description} = req.body
-  //   db.create_tab([userid, songname, songimg, albumName, description]).then(newTab => {
-  //     res.status(200).send(newTab)
-  //   })
-  // })
   
-
   // AWS3 stuff
-//mainjs
 S3(app)
   //aws3 stuff
 
 
 
 
-
+//sockets and arduino code
 io.on("connection", (socket) => {
   console.log("user has connected")
-  sensor.on("change", _.debounce(() => {
-    let val = sensor.scaleTo(0, 1000)
-    if (val > 0.2) {
-      hits.push("√ ")
-        socket.emit("hit", hits)
-        console.log(hits)
+  let recentHits =[]; 
+  let start = false;
+  let hit = []
+
+const throttle = _.throttle(() => {
+  let val = sensor.scaleTo(1, 40)
+  console.log('val', val)
+  if(!start){
+    start = Date.now();
+  }
+if (val) {
+  // recentHits.push(Date.now() - start) // this is pushing the time when the drum was last hit. 
+  hit.push(Date.now() - start) // this is pushing the time when the drum was last hit. 
+
+    let filteredHit = hit.filter(filteredHits => {
+if (hit.length !== 1) {
+  let first = hit.unshift()
+     recentHits.push(first)
+     hit = []
+ }
+return true
+
+})
+              
+              socket.emit("hit", recentHits)
+      console.log('this is the hit',hit);
+      console.log('this is the recent hit',recentHits);
+        
       }
-      // if (val > 5) {
-        //   hits.push('V')
-        // }
-      }, 65))
-    })
-    
-  
+    }, 15, { 'edge': 'leading' })
+
+  sensor.on("change", throttle)
   })
+  
+})
+
+
+  
+  
+  // let io = socket(server)
+  //ideas tips
+  //start recording stop recording
+  // empty array
+  
+  //sockets update live!
+  
+ 
+    //every four seconds is an array
+    // if the drum hasnt been hit in 7 seconds. create new array and setdate to 0
+  //   let start = false;
+    
+  //   const throttle = _.throttle(() => {
+  //     let val = sensor.scaleTo(1,100)
+  //     let hit = []
+  //     let valArr= []
+  //     console.log('val = ', val)
+  //           if(!start){
+  //                 start = Date.now();
+  //               }
+  //               // if (val) {
+  //               //   hit.push(start = Date.now())
+  //               //   let filteredHit = hit.filter(filteredHits => {
+  //               //         if (hit.length !== 1) {
+  //               //           let first = hit.unshift()
+  //               //           let remove = hit.splice(2)
+  //               //           console.log('this is the hit array', hit)
+  //               //           console.log('this is first', first)
+  //               //           console.log('this is the removed', remove)
+  //               //           // recentHits.push(hit[0])
+  //               //         }
+  //               //       })
+  //               //       recentHits.push(filteredHit)
+  //               //     }
+                      
+            
+  //                   // recentHits.push(Date.now() - start)
+  //                   socket.emit("hit", recentHits)
+  //                   console.log(recentHits)
+                
+  //             }, 15)
+
+  // sensor.on("change", throttle)
+  //   // thoughts before bed. 
+  //   // will debounce throw off the set intervals?
+  //   // switch starement?
+ 
+  // setInterval(() => {
+  //   //if val() {}
+  //   setTimeout(() => {
+  //     console.log('250')
+  //     if (hits == 1 ) {
+  //       hits.push(['hit'])
+  //       console.log('ive been hit!')
+  //     } else {
+  //       hits.push(['rest'])
+  //       console.log('rest baby!')
+  //     }
+  //     // Check beat count and do something
+  //   }, 250)
+  //   setTimeout(() => {
+  //     console.log('500')
+  //   }, 500)
+  //   setTimeout(() => {
+  //     console.log('750')
+  //     // Check beat count and do something
+  //   }, 750)
+  //   setTimeout(() => {
+  //     console.log('1000')
+  //     // Check beat count and do something
+  //   }, 1000)
+  //   setTimeout(() => {
+  //     // Check beat count and do something
+  //   }, 1250)
+  //   setTimeout(() => {
+  //   console.log('1500') 
+  //   // Check beat count and do something
+  //   }, 1500)
+  //   setTimeout(() => {
+  //     console.log('1750')
+  //     // Check beat count and do something
+  //   }, 1750)
+  //   setTimeout(() => {
+  //     console.log('2000')
+  //     // Check beat count and do something
+  //   }, 2000)
+  //   setTimeout(() => {
+  //     console.log('2250')
+  //     // Check beat count and do something
+  //   }, 2250)
+  //   setTimeout(() => {
+  //     console.log('2500')
+  //     // Check beat count and do something
+  //   }, 2500)
+  //   setTimeout(() => {
+  //     console.log('2750')
+  //     // Check beat count and do something
+  //   }, 2750)
+  //   setTimeout(() => {
+  //     console.log('3000')
+  //     // Check beat count and do something
+  //   }, 3000)
+  //   setTimeout(() => {
+  //     console.log('3250')
+  //     // Check beat count and do something
+  //   }, 3250)
+  //   setTimeout(() => {
+  //     console.log('3500')
+  //     // Check beat count and do something
+  //   }, 3500)
+  //   setTimeout(() => {
+  //   console.log('3750') 
+  //   // Check beat count and do something
+  //   }, 3750)
+  //   setTimeout(() => {
+  //     console.log('4000')
+  //     //socket emit?
+  //     // Check beat count and do something
+  //   }, 3980)
+  // }, 4000 /* the time every beat should take */)
+  
+
   
   
   
