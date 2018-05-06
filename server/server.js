@@ -138,10 +138,18 @@ Board.on("ready", () => {
   //sockets and arduino code
   io.on("connection", connectionSocket => {
     console.log("user has connected")
+    let renderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     let start = false
     let recentHits = []
     let hit = []
     const play = require("play")
+    let count = 0
+    let measure = 0
+    let measureObj = {
+      measure: 0,
+      renderArr: []
+    }
+
     // sensor.on("change", () => {
     //   if (!start) {
     //     start = Date.now()
@@ -152,7 +160,6 @@ Board.on("ready", () => {
     //     console.log("sensor val: ", sensor.value)
     //     // recentHits.push(Date.now() - start)
     //   }
-    //   connectionSocket.emit("hit", recentHits)
     //   console.log("recent hits: ", recentHits)
     // })
 
@@ -162,6 +169,22 @@ Board.on("ready", () => {
       if (!start) {
         start = Date.now()
       }
+
+      count = ~~((hit - 4000 * measure) / 250)
+      renderArr[count] = 1
+
+      if (hit > 4000 * (measure + 1)) {
+        console.log("we made a new measure magic")
+        renderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        measure++
+      }
+      measureObj = {
+        measure,
+        renderArr
+      }
+      connectionSocket.emit("hit", measureObj)
+
+      // let filterBar = recentHits.map()
       if (val) {
         // const play = require("play")
         // console.log(play)
@@ -178,32 +201,14 @@ Board.on("ready", () => {
             // console.log('first', first)
             console.log("this is the hit", hit)
           }
+
           return false
         })
       }
 
-      console.log("this is the recent hit", recentHits)
-      // }, 15, { 'edge': 'leading' })
-      // let x = 251
       // let renderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      // // let count = 0
-      // let measure = 1
 
-      // const mapFunc = (ele, i) => {
-      //   if (ele < x) {
-      //     renderArr[i] = 1
-      //   } else {
-      //     renderArr[i] = 0
-      //   }
-      //   // count++
-      //   x = x + 250
-      //   if (x > 4000) {
-      //     measure++
-      //     x = 251
-      //     renderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      //   }
-      // }
-      // let filterBar = recentHits.map(mapFunc)
+      console.log("this is the recent hit", recentHits)
     }) // end of on change
   }) // end of io.on
 }) //end of board on. everything stays above here.

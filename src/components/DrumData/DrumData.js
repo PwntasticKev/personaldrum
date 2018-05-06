@@ -1,14 +1,25 @@
 import React, { Component } from "react"
 import { socketConnect } from "socket.io-react"
 import "./DrumData.css"
+import Measures from "../Measures/Measures"
 // import io from 'socket.io-react'
 
 class DrumData extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hit: [],
-      measure: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      measures: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
     }
   }
 
@@ -22,8 +33,13 @@ class DrumData extends Component {
 
   getDrum() {
     let { socket } = this.props
-    socket.on("hit", recentHits => {
-      this.setState({ hit: recentHits })
+    socket.on("hit", measureObj => {
+      console.log("render arr:", measureObj)
+      let measureArray = this.state.measures
+      measureArray[measureObj.measure] = measureObj.renderArr
+      this.setState({
+        measures: measureArray
+      })
       //if 1 then 1/4 note
       //if 2 then half note
     })
@@ -32,28 +48,17 @@ class DrumData extends Component {
   render() {
     return (
       <div className="DrumData">
-        <div>{this.state.hit}</div>
+        {/* <div>{this.state.hit}</div> */}
         <button onClick={this.resetHits}>reset hits</button>
         <button onClick={this.listening}>reset hits</button>
-        <div className="measure">
-          <div>{this.state.measure[0]}</div>
-          <div>{this.state.measure[1]}</div>
-          <div>{this.state.measure[2]}</div>
-          <div>{this.state.measure[3]}</div>
-          <div>{this.state.measure[4]}</div>
-          <div>{this.state.measure[5]}</div>
-          <div>{this.state.measure[6]}</div>
-          <div>{this.state.measure[7]}</div>
-          <div>{this.state.measure[8]}</div>
-          <div>{this.state.measure[9]}</div>
-          <div>{this.state.measure[10]}</div>
-          <div>{this.state.measure[11]}</div>
-          <div>{this.state.measure[12]}</div>
-          <div>{this.state.measure[13]}</div>
-          <div>{this.state.measure[14]}</div>
-          <div>{this.state.measure[15]}</div>
-          <div>{this.state.measure[16]}</div>
-        </div>
+        <Measures measure={this.state.measures[0]} />
+        <Measures measure={this.state.measures[1]} />
+        <Measures measure={this.state.measures[2]} />
+        <Measures measure={this.state.measures[3]} />
+        <Measures measure={this.state.measures[4]} />
+        <Measures measure={this.state.measures[5]} />
+        <Measures measure={this.state.measures[6]} />
+        <Measures measure={this.state.measures[7]} />
       </div>
     )
   }
