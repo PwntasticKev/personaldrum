@@ -26,143 +26,126 @@ export default class Measures extends Component {
       case "0 0 0 1":
         console.log("this is not default")
         return (
-          <div>
-            <div>
-              <img src={one} />>
-            </div>
+          <div className="noteone">
+            <img src={one} alt="" />
           </div>
         )
         break
       case "0 0 1 0":
         console.log("this is not default")
         return (
-          <div>
-            <div>
-              <img src={one} />
-            </div>
+          <div className="noteone">
+            <img src={one} alt="" />
           </div>
         )
         break
       case "0 0 1 1":
         console.log("this is not default")
         return (
-          <div>
-            <img src={fasttwo} />
+          <div className="notetwo">
+            <img src={fasttwo} alt="" />
           </div>
         )
         break
       case "0 1 0 0":
         console.log("this is not default")
         return (
-          <div>
-            <div>
-              <img src={one} />
-            </div>
+          <div className="noteone">
+            <img src={one} alt="" />
           </div>
         )
         break
       case "0 1 0 1":
         console.log("this is not default")
         return (
-          <div>
-            <div>
-              <img src={two} />
-            </div>
+          <div className="notetwo">
+            <img src={two} alt="" />
           </div>
         )
         break
       case "0 1 1 0":
         console.log("this is not default")
         return (
-          <div>
-            <img src={fasttwo} />
+          <div className="notefasttwo">
+            <img src={fasttwo} alt="" />
           </div>
         )
         break
       case "0 1 1 1":
         console.log("this is not default")
         return (
-          <div>
-            <img src={three} />
+          <div className="notethree">
+            <img src={three} alt="" />
           </div>
         )
         break
       case "1 0 0 0":
         console.log("this is not default")
         return (
-          <div>
-            <div>
-              <img src={one} />
-            </div>
+          <div className="noteone">
+            <img src={one} alt="" />
           </div>
         )
         break
       case "1 0 0 1":
         console.log("this is not default")
         return (
-          <div>
-            <div>
-              <img src={one} />
-            </div>
-            <div>
-              <img src={one} />
-            </div>
+          <div className="noteone">
+            <img src={one} alt="" />
           </div>
         )
         break
       case "1 0 1 0":
         console.log("this is not default")
         return (
-          <div>
-            <div className="note">
-              <img src={two} />
-            </div>
+          <div className="notetwo">
+            <img src={two} alt="" />
           </div>
         )
         break
       case "1 0 1 1":
         console.log("this is not default")
         return (
-          <div>
-            <img src={three} />
+          <div className="notethree">
+            <img src={three} alt="" />
           </div>
         )
         break
       case "1 1 0 0":
         console.log("this is not default")
         return (
-          <div>
-            <img src={three} />
+          <div className="notethree">
+            <img src={three} alt="" />
           </div>
         )
         break
       case "1 1 0 1":
         console.log("this is not default")
         return (
-          <div>
-            <img src={three} />
+          <div className="notethree">
+            <img src={three} alt="" />
           </div>
         )
         break
       case "1 1 1 0":
         console.log("this is not default")
         return (
-          <div>
-            <img src={three} />
+          <div className="notethree">
+            <img src={three} alt="" />
           </div>
         )
         break
       case "1 1 1 1":
         console.log("this is not default")
         return (
-          <div>
-            <img src={four} />
+          <div className="notefour">
+            <img src={four} alt="" />
           </div>
         )
         break
       default:
         console.log("this is default", passArr)
-        return <div> 'helo' </div>
+        return <div>.</div>
     }
   }
   render() {
@@ -173,18 +156,6 @@ export default class Measures extends Component {
           <div>{this.filterNoteCase(this.props.note1)}</div>
           <div>{this.filterNoteCase(this.props.note2)}</div>
           <div>{this.filterNoteCase(this.props.note3)}</div>
-          {/* <div>{this.filterNoteCase(this.props.note0)}</div>
-          <div>{this.filterNoteCase(this.props.note1)}</div>
-          <div>{this.filterNoteCase(this.props.note2)}</div>
-          <div>{this.filterNoteCase(this.props.note3)}</div> */}
-          {/* <div>{this.props.note2[0]}</div>
-          <div>{this.props.note2[1]}</div>
-          <div>{this.props.note2[2]}</div>
-          <div>{this.props.note2[3]}</div>
-          <div>{this.props.note3[0]}</div>
-          <div>{this.props.note3[1]}</div>
-          <div>{this.props.note3[2]}</div>
-          <div>{this.props.note3[3]}</div> */}
         </div>
       </div>
     )

@@ -52,17 +52,15 @@
 //     backgroundColor: theme.palette.background.paper
 //   },
 //   color: {
-//     backgroundColor: 'white',
-//     display: 'flex',
-//     justifyContent: 'center',
-//     color: '#FF3B3F'
+//     backgroundColor: "white",
+//     display: "flex",
+//     justifyContent: "center",
+//     color: "#FF3B3F"
 //   },
 //   appBarContainer: {
-//     boxShadow: 'none'
+//     boxShadow: "none"
 //   }
 // })
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
 // class ScrollableTabsButtonAuto extends React.Component {
 //       state = {
@@ -81,7 +79,6 @@
 //       Sortable.create(snare, options);
 //     }
 //   }
-  
 
 //   pull = snare => {
 //     // check if backing instance not null
@@ -108,7 +105,6 @@
 //       Sortable.create(hihat, options);
 //     }
 //   }
-  
 
 //   pullhihat = hihat => {
 //     // check if backing instance not null
@@ -125,16 +121,15 @@
 //     }
 //   }
 
-// // will activate the method to listen for when the drum is being hit. 
+// // will activate the method to listen for when the drum is being hit.
 //   play() {
 //     console.log('play button!');
-    
+
 //   }
 
 //   handleChange = (event, value) => {
 //     this.setState({ value })
 //   }
-
 
 //   render() {
 //     const { classes } = this.props
@@ -144,17 +139,16 @@
 //       display: 'none'
 //     }
 
-    
 //     return (
 //       <div className={classes.root}>
 //         <Header1 />
 //         <div className='instructions'>
 //         <div>
-//           instruction on how to begin. 
+//           instruction on how to begin.
 //         </div>
 //         <div className='play-container'>
 //         <div>
-//         <TextField id='number' label="Set Tempo..." 
+//         <TextField id='number' label="Set Tempo..."
 //         onChange={e => this.props.setTempo(e.target.value)}>
 //         </TextField>
 //           <Button onClick={this.play}>PLAY BUTTON</Button>
@@ -162,14 +156,14 @@
 //         </div>
 //         </div>
 //         <AppBar position="center" color="default" className={classes.appBarContainer}>
-//           <Tabs
-//             value={value}
-//             onChange={this.handleChange}
-//             // indicatorColor="primary" 
-//             className = {classes.color}
-//             // scrollable
-//             // scrollButtons="auto"
-//           >
+// <Tabs
+//   value={value}
+//   onChange={this.handleChange}
+//   // indicatorColor="primary"
+//   className = {classes.color}
+//   // scrollable
+//   // scrollButtons="auto"
+// >
 //             <Tab label="Snare" />
 //             <Tab label="Hi-Hat" />
 //             <Tab label="Base Drum" />
@@ -183,7 +177,7 @@
 //                 <li className="notes" id='snare2'><img src={ snare2 } alt="missing"/></li>
 //                 <li className="notes" id='snare3'><img src={ snare3 } alt="missing"/></li>
 //                 <li className="notes" id='snare4'><img src={ snare4 } alt=""/></li>
-             
+
 //               <div className="extrasnare" ref={this.pull}>
 //               {/* <div className="snareextras"> */}
 //                   <li className="notes" id='snare1'><img src={ snareroll } alt="missing"/></li>
@@ -224,8 +218,7 @@
 //              <li className="notes"><img src={ snare3 } alt="missing"/></li>
 //              <li className="notes"><img src={ snare4 } alt=""/></li>
 //           </TabContainer>)}
-       
-        
+
 //             <div>place your shwifty groove!</div>
 //             <div id='sheetMusic'>
 //               <div className='music'>
@@ -267,6 +260,5 @@
 //     tempo: state.tempo
 //   }
 // }
-
 
 // export default connect(mapStateToProps, { setTempo })(withStyles(styles)(ScrollableTabsButtonAuto));

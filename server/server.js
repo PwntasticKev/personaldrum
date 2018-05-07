@@ -140,7 +140,7 @@ Board.on("ready", () => {
     console.log("user has connected")
     let renderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     let start = false
-    let recentHits = []
+    const recentHits = []
     let hit = []
     const play = require("play")
     let count = 0
@@ -149,19 +149,6 @@ Board.on("ready", () => {
       measure: 0,
       renderArr: []
     }
-
-    // sensor.on("change", () => {
-    //   if (!start) {
-    //     start = Date.now()
-    //   }
-    //   const value = sensor.value
-    //   if (sensor.value > 1) {
-    //     play.sound("./snare.mp3")
-    //     console.log("sensor val: ", sensor.value)
-    //     // recentHits.push(Date.now() - start)
-    //   }
-    //   console.log("recent hits: ", recentHits)
-    // })
 
     sensor.on("change", () => {
       const val = sensor.scaleTo(1, 40)
@@ -195,20 +182,15 @@ Board.on("ready", () => {
         let filteredHit = hit.filter(() => {
           if (hit.length !== 1) {
             play.sound("./snare.mp3")
-            let first = hit.shift(hit)
+            const first = hit.shift(hit)
             recentHits.push(first)
             hit = []
-            // console.log('first', first)
             console.log("this is the hit", hit)
           }
-
           return false
         })
       }
-
-      // let renderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
       console.log("this is the recent hit", recentHits)
-    }) // end of on change
-  }) // end of io.on
-}) //end of board on. everything stays above here.
+    })
+  })
+})

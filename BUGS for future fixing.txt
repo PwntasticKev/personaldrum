@@ -1,0 +1,2 @@
+at the end of the measure if you keep hitting it will update the last note. 
+
