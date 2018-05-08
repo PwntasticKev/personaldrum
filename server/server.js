@@ -34,7 +34,7 @@ Board.on("ready", () => {
       console.log(`listening on ${SERVER_PORT}`)
     })
   )
-  app.use(bodyParser.json())
+  app.use(bodyParser.json({ limit: "40mb" }))
   app.use(cors())
 
   app.use(

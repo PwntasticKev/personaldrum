@@ -108,7 +108,12 @@ class Arduino extends React.Component {
     return (
       <div className={classes.root}>
         <Header1 />
-
+        <h2 className="instructions-header">Instructions</h2>
+        <div className="instructions">
+          <div>1. Make sure Drum is correctly connected</div>
+          <div>2. Begin Playing your Groove!</div>
+          <div>3. Stop playing and save your Schwifty Groove!</div>
+        </div>
         {/* <div className="play-container">
             <div>
               <TextField
@@ -123,18 +128,16 @@ class Arduino extends React.Component {
 
         <div id="sheetMusic">
           <div className="music">
-            <div>
-              <div className="snare">
-                <DrumData />
-              </div>
+            <div className="snare">
+              <DrumData />
             </div>
-            <div className="bar">
+            {/* <div className="bar">
               <div className="e" />
               <div className="g" />
               <div className="b" />
               <div className="d" />
               <div className="f" />
-            </div>
+            </div> */}
           </div>
         </div>
 

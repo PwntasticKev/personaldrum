@@ -127,7 +127,7 @@ export default class Measures extends Component {
         )
 
       default:
-        return <div>.</div>
+        return <div className="" />
     }
   }
   render() {

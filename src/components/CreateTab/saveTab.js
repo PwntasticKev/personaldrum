@@ -43,6 +43,7 @@ export default class SaveTab extends React.Component {
     this.setState({
       element: sheetMusic
     })
+    console.log("sheetmusic", sheetMusic)
   }
 
   handlePhoto(event) {
@@ -67,7 +68,8 @@ export default class SaveTab extends React.Component {
       songName,
       albumName,
       description,
-      sheeturl
+      sheeturl,
+      artist
     } = this.state
     event.preventDefault()
     console.log("send photo!")
@@ -75,9 +77,12 @@ export default class SaveTab extends React.Component {
     html2canvas(this.state.element[0]).then(canvas => {
       let url = canvas.toDataURL("image/png")
       let send = `${url}`
-      this.setState({
-        sheeturl: send
-      })
+      this.setState(
+        {
+          sheeturl: send
+        },
+        () => {}
+      )
       sendToback({
         file,
         filename,
@@ -85,7 +90,8 @@ export default class SaveTab extends React.Component {
         songName,
         albumName,
         description,
-        sheeturl
+        sheeturl: send,
+        artist
       }).then(response => {
         console.log("sebdto back", this.state)
       })
@@ -129,48 +135,59 @@ export default class SaveTab extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Save Your Song</DialogTitle>
-          <DialogContent>
-            <DialogContentText />
-            <TextField
-              onChange={e => this.songInfo(e)}
-              required
-              id="required"
-              label="Song Name"
-              margin="normal"
-              name="songName"
-            />
-            <div />
-            <TextField
-              onChange={e => this.songInfo(e)}
-              label="Album Name"
-              margin="normal"
-              name="albumName"
-            />
-            <br />
-            <br />
-            <div className="FileUpload">
-              <input type="file" onChange={this.handlePhoto} />
-              <br />
-              {this.state.file && (
-                <img src={this.state.file} alt="" className="file-preview" />
-              )}
-              {/* <SaveTabButton sendPhoto={this.sendPhoto}/> */}
-            </div>
-            <TextField
-              onChange={e => this.songInfo(e)}
-              label="Description"
-              margin="normal"
-              name="description"
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            {/* <Button onClick={this.handleClose} color="primary"> */}
-            <Button onClick={e => this.sendPhoto(e)}>SAVE TAB</Button>
-          </DialogActions>
+          <DialogTitle id="form-dialog-title" className="save-your-song-text">
+            Save Your Song
+          </DialogTitle>
+          <div className="save-container">
+            <DialogContent>
+              <DialogContentText />
+              <div className="song-album-container">
+                <TextField
+                  onChange={e => this.songInfo(e)}
+                  required
+                  id="required"
+                  label="Song Name"
+                  margin="normal"
+                  name="songName"
+                />
+                <TextField
+                  onChange={e => this.songInfo(e)}
+                  label="Album Name"
+                  margin="normal"
+                  name="albumName"
+                />
+                <TextField
+                  onChange={e => this.songInfo(e)}
+                  label="Description"
+                  margin="normal"
+                  name="description"
+                />
+                <TextField
+                  onChange={e => this.songInfo(e)}
+                  label="Artist Name"
+                  margin="normal"
+                  name="artist"
+                />
+              </div>
+              <div className="FileUpload">
+                <input type="file" onChange={this.handlePhoto} />
+                <br />
+                {this.state.file && (
+                  <img src={this.state.file} alt="" className="file-preview" />
+                )}
+                {/* <SaveTabButton sendPhoto={this.sendPhoto}/> */}
+              </div>
+            </DialogContent>
+          </div>
+          <div className="save-cancel">
+            <DialogActions>
+              <Button onClick={this.handleClose} color="primary">
+                Cancel
+              </Button>
+              {/* <Button onClick={this.handleClose} color="primary"> */}
+              <Button onClick={e => this.sendPhoto(e)}>SAVE TAB</Button>
+            </DialogActions>
+          </div>
         </Dialog>
       </div>
     )

@@ -1,37 +1,37 @@
 // import React from "react"
-// import Header1 from '../LoggedInHomepage/Header1/Header1'
-// import { connect } from 'react-redux'
-// import { setTempo } from '../../ducks/reducer'
-// import './CreateTab.css'
+// import Header1 from "../LoggedInHomepage/Header1/Header1"
+// import { connect } from "react-redux"
+// import { setTempo } from "../../ducks/reducer"
+// import "./CreateTab.css"
 // import PropTypes from "prop-types"
 // import { withStyles } from "material-ui/styles"
 // import AppBar from "material-ui/AppBar"
 // import Tabs, { Tab } from "material-ui/Tabs"
 // import Typography from "material-ui/Typography"
-// import Button from 'material-ui/Button'
-// import Checkbox from 'material-ui/Checkbox'
-// import TextField from 'material-ui/TextField'
-// import snare1 from '../Arduino/drumimgs/juansnare.svg'
-// import snare2 from '../Arduino/drumimgs/2snare.svg'
-// import snare3 from '../Arduino/drumimgs/3snare.svg'
-// import snare4 from '../Arduino/drumimgs/4snare.svg'
-// import hihat2 from '../Arduino/drumimgs/2hihat.svg'
-// import hihat3 from '../Arduino/drumimgs/3hihat.svg'
-// import hihat4 from '../Arduino/drumimgs/4hihat.svg'
-// import crash from '../Arduino/drumimgs/crash.svg'
-// import note from '../Arduino/drumimgs/note.svg'
-// import base1 from '../Arduino/drumimgs/base1.svg'
-// import base2 from '../Arduino/drumimgs/base2.svg'
-// import base3 from '../Arduino/drumimgs/base3.svg'
-// import base4 from '../Arduino/drumimgs/base4.svg'
-// import znote from '../Arduino/drumimgs/znote.svg'
-// import crashnote from '../Arduino/drumimgs/crashnote.svg'
-// import snareroll from '../Arduino/drumimgs/snareroll.svg'
-// import choke from '../Arduino/drumimgs/choke.svg'
-// import snarefast3 from '../Arduino/drumimgs/quicktriple.svg'
-// import snarefast4 from '../Arduino/drumimgs/quickquad.svg'
-// import SaveTab from './saveTab'
-// import Sortable from 'sortablejs'
+// import Button from "material-ui/Button"
+// import Checkbox from "material-ui/Checkbox"
+// import TextField from "material-ui/TextField"
+// import snare1 from "../notesimg//juansnare.svg"
+// import snare2 from "../notesimg//2snare.svg"
+// import snare3 from "../notesimg//3snare.svg"
+// import snare4 from "../notesimg//4snare.svg"
+// import hihat2 from "../notesimg//2hihat.svg"
+// import hihat3 from "../notesimg//3hihat.svg"
+// import hihat4 from "../notesimg//4hihat.svg"
+// import crash from "../notesimg/crash.svg"
+// import note from "../notesimg//note.svg"
+// import base1 from "../notesimg//base1.svg"
+// import base2 from "../notesimg//base2.svg"
+// import base3 from "../notesimg//base3.svg"
+// import base4 from "../notesimg//base4.svg"
+// import znote from "../notesimg//znote.svg"
+// import crashnote from "../notesimg//crashnote.svg"
+// import snareroll from "../notesimg//snareroll.svg"
+// import choke from "../notesimg//choke.svg"
+// import snarefast3 from "../notesimg//quicktriple.svg"
+// import snarefast4 from "../notesimg//quickquad.svg"
+// import SaveTab from "./saveTab"
+// import Sortable from "sortablejs"
 
 // function TabContainer(props) {
 //   return (
@@ -63,20 +63,20 @@
 // })
 
 // class ScrollableTabsButtonAuto extends React.Component {
-//       state = {
-//         value: 0,
-//         checkedA: true,
-//         checkedB: true,
-//         checkedF: true,
-//       }
-//   snareput = (snare) => {
+//   state = {
+//     value: 0,
+//     checkedA: true,
+//     checkedB: true,
+//     checkedF: true
+//   }
+//   snareput = snare => {
 //     if (snare) {
 //       let options = {
 //         group: {
-//           name: 'snare',
+//           name: "snare"
 //         }
-//       };
-//       Sortable.create(snare, options);
+//       }
+//       Sortable.create(snare, options)
 //     }
 //   }
 
@@ -88,21 +88,21 @@
 //         group: {
 //           name: "snare",
 //           pull: "clone",
-//           revertClone: true,
-//   }
+//           revertClone: true
+//         }
 //       }
 //       Sortable.create(snare, options)
 //     }
 //   }
 
-//   hihatput = (hihat) => {
+//   hihatput = hihat => {
 //     if (hihat) {
 //       let options = {
 //         group: {
-//           name: 'hihat',
+//           name: "hihat"
 //         }
-//       };
-//       Sortable.create(hihat, options);
+//       }
+//       Sortable.create(hihat, options)
 //     }
 //   }
 
@@ -114,17 +114,16 @@
 //         group: {
 //           name: "hihat",
 //           pull: "clone",
-//           revertClone: true,
-//   }
+//           revertClone: true
+//         }
 //       }
 //       Sortable.create(hihat, options)
 //     }
 //   }
 
-// // will activate the method to listen for when the drum is being hit.
+//   // will activate the method to listen for when the drum is being hit.
 //   play() {
-//     console.log('play button!');
-
+//     console.log("play button!")
 //   }
 
 //   handleChange = (event, value) => {
@@ -136,34 +135,38 @@
 //     const { value } = this.state
 
 //     const showNote = {
-//       display: 'none'
+//       display: "none"
 //     }
 
 //     return (
 //       <div className={classes.root}>
 //         <Header1 />
-//         <div className='instructions'>
-//         <div>
-//           instruction on how to begin.
+//         <div className="instructions">
+//           <div>instruction on how to begin.</div>
+//           <div className="play-container">
+//             <div>
+//               <TextField
+//                 id="number"
+//                 label="Set Tempo..."
+//                 onChange={e => this.props.setTempo(e.target.value)}
+//               />
+//               <Button onClick={this.play}>PLAY BUTTON</Button>
+//             </div>
+//           </div>
 //         </div>
-//         <div className='play-container'>
-//         <div>
-//         <TextField id='number' label="Set Tempo..."
-//         onChange={e => this.props.setTempo(e.target.value)}>
-//         </TextField>
-//           <Button onClick={this.play}>PLAY BUTTON</Button>
-//         </div>
-//         </div>
-//         </div>
-//         <AppBar position="center" color="default" className={classes.appBarContainer}>
-// <Tabs
-//   value={value}
-//   onChange={this.handleChange}
-//   // indicatorColor="primary"
-//   className = {classes.color}
-//   // scrollable
-//   // scrollButtons="auto"
-// >
+//         <AppBar
+//           position="center"
+//           color="default"
+//           className={classes.appBarContainer}
+//         >
+//           <Tabs
+//             value={value}
+//             onChange={this.handleChange}
+//             // indicatorColor="primary"
+//             className={classes.color}
+//             // scrollable
+//             // scrollButtons="auto"
+//           >
 //             <Tab label="Snare" />
 //             <Tab label="Hi-Hat" />
 //             <Tab label="Base Drum" />
@@ -171,81 +174,149 @@
 //             <Tab label="Cymbals" />
 //           </Tabs>
 //         </AppBar>
-//         {value === 0 && (<TabContainer><div className="group">
+//         {value === 0 && (
+//           <TabContainer>
+//             <div className="group">
 //               <div className="group-list" ref={this.pull}>
-//                 <li className="notes" id='snare1'><img src={ snare1 } alt="missing"/></li>
-//                 <li className="notes" id='snare2'><img src={ snare2 } alt="missing"/></li>
-//                 <li className="notes" id='snare3'><img src={ snare3 } alt="missing"/></li>
-//                 <li className="notes" id='snare4'><img src={ snare4 } alt=""/></li>
+//                 <li className="notes" id="snare1">
+//                   <img src={snare1} alt="missing" />
+//                 </li>
+//                 <li className="notes" id="snare2">
+//                   <img src={snare2} alt="missing" />
+//                 </li>
+//                 <li className="notes" id="snare3">
+//                   <img src={snare3} alt="missing" />
+//                 </li>
+//                 <li className="notes" id="snare4">
+//                   <img src={snare4} alt="" />
+//                 </li>
 
-//               <div className="extrasnare" ref={this.pull}>
-//               {/* <div className="snareextras"> */}
-//                   <li className="notes" id='snare1'><img src={ snareroll } alt="missing"/></li>
-//                   <li className="notes" id='snare4'><img src={ snarefast3 } alt="missing"/></li>
-//                   <li className="notes" id='snare3'><img src={ snarefast3 } alt="missing"/></li>
-//                   <li className="notes" id='snare5'><img src={ snarefast4 } alt="missing"/></li>
-//               {/* </div> */}
+//                 <div className="extrasnare" ref={this.pull}>
+//                   {/* <div className="snareextras"> */}
+//                   <li className="notes" id="snare1">
+//                     <img src={snareroll} alt="missing" />
+//                   </li>
+//                   <li className="notes" id="snare4">
+//                     <img src={snarefast3} alt="missing" />
+//                   </li>
+//                   <li className="notes" id="snare3">
+//                     <img src={snarefast3} alt="missing" />
+//                   </li>
+//                   <li className="notes" id="snare5">
+//                     <img src={snarefast4} alt="missing" />
+//                   </li>
+//                   {/* </div> */}
+//                 </div>
 //               </div>
-//               </div>
-//             </div></TabContainer>)}
+//             </div>
+//           </TabContainer>
+//         )}
 //         {value === 1 && (
 //           <TabContainer>
-//           <div className="group-list" ref={this.pullhihat}>
-//              <li className="notes" id='snare1'><img src={ snare1 } alt="notthere"/></li>
-//              <li className="notes" id='hihat2'><img src={ hihat3 } alt="missing"/></li>
-//              <li className="notes" id='snare3'><img src={ hihat3 } alt="missing"/></li>
-//              <li className="notes" id='snare4'><img src={ hihat4 } alt=""/></li>
-//              </div>
-//            </TabContainer>)}
+//             <div className="group-list" ref={this.pullhihat}>
+//               <li className="notes" id="snare1">
+//                 <img src={snare1} alt="notthere" />
+//               </li>
+//               <li className="notes" id="hihat2">
+//                 <img src={hihat3} alt="missing" />
+//               </li>
+//               <li className="notes" id="snare3">
+//                 <img src={hihat3} alt="missing" />
+//               </li>
+//               <li className="notes" id="snare4">
+//                 <img src={hihat4} alt="" />
+//               </li>
+//             </div>
+//           </TabContainer>
+//         )}
 //         {value === 2 && (
 //           <TabContainer>
-//             <li className="notes"><img src={ snare1 } alt="missing"/></li>
-//             <li className="notes"><img src={ snare2 } alt="missing"/></li>
-//             <li className="notes"><img src={ snare3 } alt="missing"/></li>
-//             <li className="notes"><img src={ snare4 } alt=""/></li>
-//           </TabContainer>)}
+//             <li className="notes">
+//               <img src={snare1} alt="missing" />
+//             </li>
+//             <li className="notes">
+//               <img src={snare2} alt="missing" />
+//             </li>
+//             <li className="notes">
+//               <img src={snare3} alt="missing" />
+//             </li>
+//             <li className="notes">
+//               <img src={snare4} alt="" />
+//             </li>
+//           </TabContainer>
+//         )}
 //         {value === 3 && (
 //           <TabContainer>
-//                 <li className="notes" id='snare1'><img src={ snare1 } alt="missing"/></li>
-//                 <li className="notes" id='snare2'><img src={ snare2 } alt="missing"/></li>
-//                 <li className="notes" id='snare3'><img src={ snare3 } alt="missing"/></li>
-//                 <li className="notes" id='snare4'><img src={ snare4 } alt=""/></li>
-//            </TabContainer>)}
+//             <li className="notes" id="snare1">
+//               <img src={snare1} alt="missing" />
+//             </li>
+//             <li className="notes" id="snare2">
+//               <img src={snare2} alt="missing" />
+//             </li>
+//             <li className="notes" id="snare3">
+//               <img src={snare3} alt="missing" />
+//             </li>
+//             <li className="notes" id="snare4">
+//               <img src={snare4} alt="" />
+//             </li>
+//           </TabContainer>
+//         )}
 //         {value === 4 && (
 //           <TabContainer>
-//              <li className="notes" id='snare1'><img src={ note } alt="missing"/></li>
-//              <li className="notes" id='snare1'><img src={ crash } alt="missing"/></li>
-//              <li className="notes"><img src={ snare3 } alt="missing"/></li>
-//              <li className="notes"><img src={ snare4 } alt=""/></li>
-//           </TabContainer>)}
+//             <li className="notes" id="snare1">
+//               <img src={note} alt="missing" />
+//             </li>
+//             <li className="notes" id="snare1">
+//               <img src={crash} alt="missing" />
+//             </li>
+//             <li className="notes">
+//               <img src={snare3} alt="missing" />
+//             </li>
+//             <li className="notes">
+//               <img src={snare4} alt="" />
+//             </li>
+//           </TabContainer>
+//         )}
 
-//             <div>place your shwifty groove!</div>
-//             <div id='sheetMusic'>
-//               <div className='music'>
-//               <div className='china' ref={this.crashput}><li></li></div>
-//               <div className='splash' ref={this.crashput}><li></li></div>
-//               <div className='crash2' ref={this.crashput}><li></li></div>
-//               <div className='crash' ref={this.crashput}><li></li></div>
-//                 <div className='hihat' ref={this.hihatput}><li></li></div>
-//                 <div>
-//                 <div className="snare" ref={this.snareput}><li></li></div>
-//                 </div>
-//               <div className="bar">
-//                 <div className='e'></div>
-//                 <div className='g'></div>
-//                 <div className='b'></div>
-//                 <div className='d'></div>
-//                 <div className='f'></div>
+//         <div>place your shwifty groove!</div>
+//         <div id="sheetMusic">
+//           <div className="music">
+//             <div className="china" ref={this.crashput}>
+//               <li />
+//             </div>
+//             <div className="splash" ref={this.crashput}>
+//               <li />
+//             </div>
+//             <div className="crash2" ref={this.crashput}>
+//               <li />
+//             </div>
+//             <div className="crash" ref={this.crashput}>
+//               <li />
+//             </div>
+//             <div className="hihat" ref={this.hihatput}>
+//               <li />
+//             </div>
+//             <div>
+//               <div className="snare" ref={this.snareput}>
+//                 <li />
 //               </div>
-//               </div>
-//               </div>
+//             </div>
+//             <div className="bar">
+//               <div className="e" />
+//               <div className="g" />
+//               <div className="b" />
+//               <div className="d" />
+//               <div className="f" />
+//             </div>
+//           </div>
+//         </div>
 
-//               <div>
-//                 <div className='bottom-container'>
-//                   <Button>Share</Button>
-//                   <SaveTab/>
-//                 </div>
-//               </div>
+//         <div>
+//           <div className="bottom-container">
+//             <Button>Share</Button>
+//             <SaveTab />
+//           </div>
+//         </div>
 //       </div>
 //     )
 //   }
@@ -261,4 +332,6 @@
 //   }
 // }
 
-// export default connect(mapStateToProps, { setTempo })(withStyles(styles)(ScrollableTabsButtonAuto));
+// export default connect(mapStateToProps, { setTempo })(
+//   withStyles(styles)(ScrollableTabsButtonAuto)
+// )

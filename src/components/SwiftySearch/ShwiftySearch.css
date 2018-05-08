@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   flex-direction: column-reverse;
-  width: 40%;
+  width: 54%;
   margin: auto;
 }
 
 .inner-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1.5fr;
   align-items: center;
 }
 
@@ -17,14 +17,11 @@
   margin-bottom: 1rem;
 }
 
-.searchbox {
-  margin-bottom: 2rem;
-}
-
 .main-container-search {
   /* background: url('../../drumimgs/drummergray.png'); */
   background-size: cover;
-  height: 100vh;
+  height: 120vh;
+  background: ghostwhite;
 }
 
 .albumimg img {
@@ -38,18 +35,21 @@
   align-items: center;
 }
 
-.songname {
+.songname > a {
   display: flex;
   padding-left: 2rem;
+  text-decoration: none;
+  color: black;
 }
 
 .description {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 40%;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  width: 54%;
   margin: auto;
   border-bottom: 1px solid lightgray;
   margin-bottom: 1rem;
+  margin-top: 3rem;
   font-style: italic;
   font-weight: 700;
   font-size: 12px;
@@ -68,3 +68,29 @@
 .album-description {
   padding-left: 2rem;
 }
+
+.song-album-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.save-cancel {
+  display: flex;
+  justify-content: center;
+}
+
+.save-your-song-text {
+  text-align: center;
+}
+
+/* .search-container {
+  position: fixed;
+  background: ghostwhite;
+  top: 5rem;
+  width: 100vw;
+} */
+
+/* .header-container {
+  margin-bottom: 3rem;
+} */

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Header1 from "../LoggedInHomepage/Header1/Header1"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 import { getTabs } from "../../ducks/reducer"
 import "./ShwiftySearch.css"
 import TextField from "material-ui/TextField"
@@ -15,7 +16,12 @@ class ShwiftySearch extends Component {
       return (
         <div className="card">
           <div key={obj.id} className="inner-card">
-            <div className="songname">{obj.songname}</div>
+            <div className="songname">
+              <Link to={`/sheetmusic/${obj.id}`}>{obj.songname}</Link>
+            </div>
+            <div>
+              <div className="artist">{obj.artist}</div>
+            </div>
             <div className="img-album-container">
               <div>
                 <div>{obj.album}</div>
@@ -31,25 +37,28 @@ class ShwiftySearch extends Component {
     })
     return (
       <div className="main-container-search">
-        <Header1 />
-        <div>Search For Grooves</div>
-        <div>
-          <TextField
-            className="searchbox"
-            id="with-placeholder"
-            label="Schwifty Groove"
-            margin="normal"
-            onChange={
-              e =>
-                e.target.value
-                  ? this.props.getTabs(e.target.value)
-                  : this.props.getTabs()
-              // this.props.getTabs(e.target.value === 0)
-            }
-          />
+        <div className="header-container">
+          <Header1 />
+        </div>
+        <div className="search-container">
+          <div className="searchBox">
+            <TextField
+              id="with-placeholder"
+              label="Schwifty Grooves"
+              margin="normal"
+              onChange={
+                e =>
+                  e.target.value
+                    ? this.props.getTabs(e.target.value)
+                    : this.props.getTabs()
+                // this.props.getTabs(e.target.value === 0)
+              }
+            />
+          </div>
         </div>
         <div className="description">
           <div className="song">Song</div>
+          <div>Artist</div>
           <div className="album-cover-description">
             <div className="album-description">Album</div>
             <div>Album Cover</div>

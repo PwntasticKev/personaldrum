@@ -57,11 +57,11 @@ class DrumData extends Component {
         buildArr = []
       }
 
-      console.log("render arr:", measureObj)
+      // console.log("render arr:", measureObj)
       let measureArray = [...this.state.measures]
       measureArray[measureObj.measure] = finishArr
       finishArr = []
-      console.log(measureArray)
+      // console.log(measureArray)
       this.setState({
         measures: measureArray
       })
@@ -125,6 +125,12 @@ class DrumData extends Component {
             note1={this.state.measures[8][1]}
             note2={this.state.measures[8][2]}
             note3={this.state.measures[8][3]}
+          />
+          <Measures
+            note0={this.state.measures[9][0]}
+            note1={this.state.measures[9][1]}
+            note2={this.state.measures[9][2]}
+            note3={this.state.measures[9][3]}
           />
         </div>
       </div>

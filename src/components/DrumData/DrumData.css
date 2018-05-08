@@ -10,7 +10,8 @@
 .measures-layout {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  text-align: center;
+  align-items: center;
+  grid-row-gap: 4rem;
 }
 
 .DrumData {
