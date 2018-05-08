@@ -1,2 +1,8 @@
 at the end of the measure if you keep hitting it will update the last note. 
 
+will note update notes until loop is completed. ( i think )
+
+
+FUTURE: will need to break it down to listen for 10 cent 2.5 in order to determine faster what is being hit. also will need to buy a better sensor to snese the notes being hit.
+
+time will continue to go on but it wont resolve ths case statement fast enough. 

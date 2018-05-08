@@ -4,27 +4,27 @@ import axios from "axios"
 const initialState = {
   user: null,
   totalTabs: [],
-  searchVal: '',
-  tempo: '',
-  songName: '',
-  albumName: '',
-  description: ''
+  searchVal: "",
+  tempo: "",
+  songName: "",
+  albumName: "",
+  description: ""
 }
 
 // action types
 const GET_USER_INFO = "GET_USER_INFO"
-const GET_TABS = 'GET_TABS'
+const GET_TABS = "GET_TABS"
 const UPDATE_SEARCH_VAL = "UPDATE_SEARCH_VAL"
-const SET_TEMPO = 'SET_TEMPO'
-const SONGNAME = 'SONG_NAME',
-      ALBUM_NAME = 'ALBUM_NAME',
-      DESCRIPTION = 'DESCRIPTION'
+const SET_TEMPO = "SET_TEMPO"
+const SONGNAME = "SONG_NAME"
+const ALBUM_NAME = "ALBUM_NAME"
+const DESCRIPTION = "DESCRIPTION"
 
 // action creators
 export function getUserInfo() {
   const userInfo = axios.get("/auth/me").then(res => {
     // console.log(res.data);
-    
+
     return res.data
   })
   return {
@@ -33,10 +33,9 @@ export function getUserInfo() {
   }
 }
 
-
-
 export function getTabs(e) {
-  const tabs = axios.get(`/totaltabs/${e}`).then(res => {
+  let search = e ? `?search=${e}` : ""
+  const tabs = axios.get(`/totaltabs${search}`).then(res => {
     return res.data
   })
   return {
@@ -58,7 +57,6 @@ export function searchVal(val) {
     payload: val
   }
 }
-  
 
 // reducer function
 export default function reducer(state = initialState, action) {
@@ -68,13 +66,13 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { user: action.payload })
 
     case GET_TABS + "_FULFILLED":
-    console.log(action.payload);
-    return Object.assign({}, state, { totalTabs: action.payload })
+      console.log(action.payload)
+      return Object.assign({}, state, { totalTabs: action.payload })
 
     case SET_TEMPO:
-      console.log(action.payload);
-      
-      return Object.assign({}, state, {tempo: action.payload})
+      console.log(action.payload)
+
+      return Object.assign({}, state, { tempo: action.payload })
 
     default:
       return state

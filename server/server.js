@@ -1,6 +1,6 @@
 require("dotenv").config()
-const AWS = require("aws-sdk")
 const path = require("path")
+const AWS = require("aws-sdk")
 const five = require("johnny-five")
 const Board = new five.Board()
 Board.on("ready", () => {
@@ -92,7 +92,7 @@ Board.on("ready", () => {
   app.get(
     "/auth/callback",
     passport.authenticate("auth0", {
-      successRedirect: "http://localhost:3000/#/loggedin",
+      successRedirect: "http://localhost:3000/#/home",
       failureRedirect: "http://localhost:3000/#/"
     })
   )
@@ -124,12 +124,21 @@ Board.on("ready", () => {
     return res.redirect("http://localhost:3000/#/")
   })
 
-  app.get("/totaltabs/:search", (req, res, next) => {
-    const { search } = req.params
+  app.get("/totaltabs", (req, res, next) => {
+    const { search } = req.query
     const db = app.get("db")
-    db.totalTabs([search.toUpperCase()]).then(totaltabs => {
-      res.status(200).send(totaltabs)
-    })
+    console.log("search!!", typeof search, search)
+
+    if (search) {
+      db.totalTabs([search.toUpperCase()]).then(totaltabs => {
+        res.status(200).send(totaltabs)
+      })
+      // make sql to grab only tabs select * from tabs
+    } else {
+      db.selectAll().then(totaltabs => {
+        res.status(200).send(totaltabs)
+      })
+    }
   })
 
   // AWS3 stuff
@@ -137,7 +146,7 @@ Board.on("ready", () => {
   //aws3 stuff
   //sockets and arduino code
   io.on("connection", connectionSocket => {
-    console.log("user has connected")
+    console.log("Socket on. play!!")
     let renderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     let start = false
     const recentHits = []
@@ -151,6 +160,7 @@ Board.on("ready", () => {
     }
 
     sensor.on("change", () => {
+      // play.sound("./snare.mp3")
       const val = sensor.scaleTo(1, 40)
       console.log("val", val)
       if (!start) {
@@ -179,13 +189,11 @@ Board.on("ready", () => {
         // recentHits.push(Date.now() - start) // this is pushing the time when the drum was last hit.
         hit.push(Date.now() - start) // this is pushing the time when the drum was last hit.
 
-        let filteredHit = hit.filter(() => {
+        const filteredHit = hit.filter(() => {
           if (hit.length !== 1) {
-            play.sound("./snare.mp3")
             const first = hit.shift(hit)
             recentHits.push(first)
             hit = []
-            console.log("this is the hit", hit)
           }
           return false
         })

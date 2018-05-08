@@ -7,7 +7,7 @@ import List from "material-ui/List"
 // import Divider from "material-ui/Divider"
 import "typeface-roboto"
 import { Link } from "react-router-dom"
-import './Menucss.css'
+import "./Menucss.css"
 // import { mailFolderListItems, otherMailFolderListItems } from "./tileData"
 
 const styles = {
@@ -16,14 +16,15 @@ const styles = {
   },
   fullList: {
     width: "auto"
-  }, stuff: {
+  },
+  stuff: {
     padding: "1rem 1rem"
   }
 }
 
 class SwipeableTemporaryDrawer extends React.Component {
   state = {
-    left: false,
+    left: false
   }
 
   toggleDrawer = (side, open) => () => {
@@ -35,24 +36,18 @@ class SwipeableTemporaryDrawer extends React.Component {
   render() {
     const { classes } = this.props
 
-    const fullList = <div className={classes.fullList}>
+    const fullList = (
+      <div className={classes.fullList}>
         <List>
-          <Link to="/loggedin">
+          <Link to="/home">
             <Button className={classes.stuff}>Home</Button>
           </Link>
-          <Link to="/arduino">
-            <Button className={classes.stuff}>Profile</Button>
-          </Link>
-          <Link to="/search">
-            <Button className={classes.stuff}>Shwifty Search</Button>
-          </Link>
-          <Link to="/createtab">
-            <Button className={classes.stuff}>CreateTab</Button>
+          <Link to="/create">
+            <Button className={classes.stuff}> Create Schwifty Groove</Button>
           </Link>
         </List>
-        {/* <Divider /> */}
-        {/* <List>{}</List> */}
       </div>
+    )
 
     return (
       <div>
@@ -60,16 +55,17 @@ class SwipeableTemporaryDrawer extends React.Component {
         <SwipeableDrawer
           open={this.state.left}
           onClose={this.toggleDrawer("left", false)}
-          onOpen={this.toggleDrawer("left", true)} >
+          onOpen={this.toggleDrawer("left", true)}
+        >
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer("left", false)}
-            onKeyDown={this.toggleDrawer("left", false)} >
+            onKeyDown={this.toggleDrawer("left", false)}
+          >
             {fullList}
           </div>
-        </SwipeableDrawer> 
-       
+        </SwipeableDrawer>
       </div>
     )
   }

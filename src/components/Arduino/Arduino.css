@@ -7,16 +7,16 @@ li {
   margin: 0px;
   padding: 1px 1px;
   display: inline-block;
-   
 }
 
-.group, .group-list {
+.group,
+.group-list {
   display: flex;
   list-style-type: none;
 }
 
 .sortable-ghost {
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .instructions {
@@ -30,12 +30,19 @@ li {
   margin-bottom: 1rem;
 }
 
- /* .bar {
-   position: relative;
-  top: -2.6rem; 
- }  */
+.bar {
+  position: static;
+  top: -4rem;
+  z-index: 2;
+  opacity: 0.5;
+  padding: 0 3rem;
+}
 
-.e, .g, .b, .d, .f {
+.e,
+.g,
+.b,
+.d,
+.f {
   border-top: 2px solid gray;
   margin-bottom: 10px;
 }
@@ -44,7 +51,6 @@ li {
   display: flex;
   justify-content: center;
 }
-
 
 .notes {
   margin-right: 5px;
@@ -72,34 +78,3 @@ li {
 #hihat2 img {
   width: 29px;
 }
-
-/* .MuiTabs-flexContainer-110 {
-justify-content: center !important;
-}
-
-.MuiTabs-flexContaine-110 {
-  display: flex;
-  justify-content: center !important;
-}
-
-.MuiTabs-flexContainer-89 {
-  background: #A9A9A9;
-  background: #EFEFEF !important;
-}
-
-.MuiTab-wrapper-106 {
-  width: 100%;
-  display: inline-flex;
-  align-items: center !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  color: #FF3B3F !important;
-}
-
-.MuiTab-textColorPrimary-101.MuiTab-selected-103 {
-  color: #FF3B3F !important;
-}
-
-.TabIndicator-colorPrimary-111  {
-   background-color: #FF3B3F !important;
-} */

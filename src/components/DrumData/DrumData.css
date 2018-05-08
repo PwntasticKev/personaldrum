@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* display: grid; */
-  /* grid-template-columns: repeat(16, 1fr); */
-  /* width: 3rem; */
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 3rem; */
 }
 
 .measures-layout {
