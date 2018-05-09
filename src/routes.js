@@ -11,7 +11,7 @@ export default (
     <Route exact path="/" component={Homepage} />
     <Route exact path="/home" component={ShwiftySearch} />
     <Route path="/create" component={Arduino} />
-    <Route path="/createtab" component={ScrollableTabsButtonAuto} />
+    {/* <Route path="/createtab" component={ScrollableTabsButtonAuto} /> */}
     <Route path="/sheetmusic/:id" component={SheetMusic} />
     {/*to access the id you will use:  this.props.match.params.id */}
   </Switch>

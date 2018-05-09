@@ -127,7 +127,7 @@ Board.on("ready", () => {
   app.get("/totaltabs", (req, res, next) => {
     const { search } = req.query
     const db = app.get("db")
-    console.log("search!!", typeof search, search)
+    // console.log("search!!", typeof search, search)
 
     if (search) {
       db.totalTabs([search.toUpperCase()]).then(totaltabs => {
@@ -139,6 +139,19 @@ Board.on("ready", () => {
         res.status(200).send(totaltabs)
       })
     }
+  })
+
+  app.get("/sheetMusic/:id", (req, res) => {
+    console.log(req.params.id)
+    const db = app.get("db")
+    db
+      .selectUri(req.params.id)
+      .then(sheetMusic => {
+        console.log(sheetMusic)
+
+        res.status(200).send(sheetMusic)
+      })
+      .catch(console.log)
   })
 
   // AWS3 stuff

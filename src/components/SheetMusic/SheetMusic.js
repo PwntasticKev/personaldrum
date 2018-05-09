@@ -1,17 +1,31 @@
 import React, { Component } from "react"
 import { render } from "react-dom"
+import axios from "axios"
+import { connect } from "react-redux"
+import { getSheetMusic } from "../../ducks/reducer"
 
 class SheetMusic extends Component {
+  componentDidMount() {
+    this.props.getSheetMusic(this.props.match.params.id)
+  }
+
   render() {
-    console.log(this.props.id)
+    let sheetMusic = this.props.uri[0] || {} // checks to see if 1rst thing is truthy.
+    console.log(sheetMusic)
 
     return (
       <div>
         {this.props.match.params.id}
-        <div>{this.props.id}</div>
+        <div>
+          <img src={sheetMusic.sheetmusic} alt="" />
+        </div>
       </div>
     )
   }
 }
 
-export default SheetMusic
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps, { getSheetMusic })(SheetMusic)

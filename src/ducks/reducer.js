@@ -8,7 +8,8 @@ const initialState = {
   tempo: "",
   songName: "",
   albumName: "",
-  description: ""
+  description: "",
+  uri: ""
 }
 
 // action types
@@ -19,6 +20,7 @@ const SET_TEMPO = "SET_TEMPO"
 const SONGNAME = "SONG_NAME"
 const ALBUM_NAME = "ALBUM_NAME"
 const DESCRIPTION = "DESCRIPTION"
+const GET_URI = "GET_URI"
 
 // action creators
 export function getUserInfo() {
@@ -44,6 +46,16 @@ export function getTabs(e) {
   }
 }
 
+export function getSheetMusic(id) {
+  const uri = axios.get(`/sheetMusic/${id}`).then(res => {
+    return res.data
+  })
+  return {
+    type: GET_URI,
+    payload: uri
+  }
+}
+
 export function setTempo(tempo) {
   return {
     type: SET_TEMPO,
@@ -64,6 +76,9 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_USER_INFO + "_FULFILLED":
       return Object.assign({}, state, { user: action.payload })
+
+    case GET_URI + "_FULFILLED":
+      return Object.assign({}, state, { uri: action.payload })
 
     case GET_TABS + "_FULFILLED":
       console.log(action.payload)

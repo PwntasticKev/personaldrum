@@ -11,6 +11,7 @@ module.exports = {
         ignoreRestSiblings: true
       }
     ],
-    "babel/new-cap": "off"
+    "babel/new-cap": "off",
+    "max-statements": "off"
   }
 }

@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { getTabs } from "../../ducks/reducer"
 import "./ShwiftySearch.css"
+import ShwiftyButton from "./ShwiftyButton"
 import TextField from "material-ui/TextField"
 
 class ShwiftySearch extends Component {
@@ -55,6 +56,7 @@ class ShwiftySearch extends Component {
               }
             />
           </div>
+          <ShwiftyButton />
         </div>
         <div className="description">
           <div className="song">Song</div>
