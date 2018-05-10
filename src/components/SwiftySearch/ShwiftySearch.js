@@ -27,7 +27,8 @@ class ShwiftySearch extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      editSongs: false
+      editSongs: false,
+      editButton: true
     }
   }
   componentDidMount() {
@@ -49,8 +50,23 @@ class ShwiftySearch extends Component {
     this.setState({ editSongs: false })
   }
 
-  updateTab = () => {
-    console.log("the update button")
+  editButtonTrue = () => {
+    this.setState({
+      editButton: true
+    })
+  }
+  editButtonFalse = () => {
+    this.setState({
+      editButton: false
+    })
+  }
+
+  updateYourTab() {
+    console.log("updateyourtab!!")
+  }
+
+  saveTab() {
+    console.log("saved tab!! hit")
   }
 
   render() {
@@ -80,17 +96,26 @@ class ShwiftySearch extends Component {
                 <div className="updatedivs">
                   <Tooltip id="tooltip-icon" title="Delete">
                     <IconButton aria-label="Delete">
-                      <DeleteIcon
-                        onClick={_ =>
-                          this.props
-                            .deleteTab(obj.id)
-                            .then(this.props.getTabs())
-                        }
-                      />
+                      <DeleteIcon onClick={_ => this.props.deleteTab(obj.id)} />
                     </IconButton>
                   </Tooltip>
                   <div>
-                    <button onClick={this.updateTab}>Edit</button>
+                    <button
+                      onClick={_ => this.editButtonFalse()}
+                      style={{
+                        display: this.state.editButton ? "block" : "none"
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={_ => this.editButtonTrue() && this.saveTab()}
+                      style={{
+                        display: this.state.editButton ? "none" : "block"
+                      }}
+                    >
+                      Save
+                    </button>
                   </div>
                 </div>
               </div>
