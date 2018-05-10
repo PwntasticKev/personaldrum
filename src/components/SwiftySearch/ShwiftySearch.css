@@ -8,7 +8,7 @@
 
 .inner-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-columns: 2fr 1fr 1fr 0.25fr;
   align-items: center;
 }
 
@@ -17,6 +17,10 @@
   margin-bottom: 1rem;
 }
 
+/* .card:hover {
+  transform: scale(1.01);
+} */
+
 .main-container-search {
   /* background: url('../../drumimgs/drummergray.png'); */
   background-size: cover;
@@ -24,9 +28,15 @@
   background: ghostwhite;
 }
 
+.albumimg {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .albumimg img {
   width: 2rem;
-  padding-right: 1.5em;
+  padding-bottom: 4px;
 }
 
 .img-album-container {
@@ -44,7 +54,7 @@
 
 .description {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-columns: 2.5fr 0.75fr 1fr 1fr;
   width: 54%;
   margin: auto;
   border-bottom: 1px solid lightgray;
@@ -84,13 +94,16 @@
   text-align: center;
 }
 
-/* .search-container {
-  position: fixed;
-  background: ghostwhite;
-  top: 5rem;
-  width: 100vw;
-} */
+.search-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
 
-/* .header-container {
-  margin-bottom: 3rem;
-} */
+.postion-search {
+  display: flex;
+  align-content: center;
+}
+
+.button-container {
+  display: flex;
+}

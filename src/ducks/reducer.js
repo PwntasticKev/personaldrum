@@ -21,6 +21,7 @@ const SONGNAME = "SONG_NAME"
 const ALBUM_NAME = "ALBUM_NAME"
 const DESCRIPTION = "DESCRIPTION"
 const GET_URI = "GET_URI"
+const DELETE_TAB = "DELETE_TAB"
 
 // action creators
 export function getUserInfo() {
@@ -43,6 +44,18 @@ export function getTabs(e) {
   return {
     type: GET_TABS,
     payload: tabs
+  }
+}
+
+export function deleteTab(id) {
+  console.log("delete")
+  console.log("delete", id)
+  const deleteTab = axios.delete(`/deletetab/${id}`).then(res => {
+    return res.data
+  })
+  return {
+    type: DELETE_TAB,
+    payload: deleteTab
   }
 }
 
@@ -82,6 +95,9 @@ export default function reducer(state = initialState, action) {
 
     case GET_TABS + "_FULFILLED":
       console.log(action.payload)
+      return Object.assign({}, state, { totalTabs: action.payload })
+
+    case DELETE_TAB + "_FULFILLED":
       return Object.assign({}, state, { totalTabs: action.payload })
 
     case SET_TEMPO:

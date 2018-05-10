@@ -6,6 +6,8 @@ import "./Header1.css"
 import SwipeableTemporaryDrawer from "./MenuButton"
 import { Redirect } from "react-router-dom"
 import TextField from "material-ui/TextField"
+import SchwiftyLogo from "../../notesimg/schwifty.svg"
+import WhiteSchwiftyLogo from "../../notesimg/whiteschwifty.svg"
 // import axios from 'axios'
 
 class Header1 extends Component {
@@ -40,7 +42,9 @@ class Header1 extends Component {
             <SwipeableTemporaryDrawer />
           </div>
           <div>
-            <a href="/">SHWIFTY LOGO</a>
+            <a href="/">
+              <img src={WhiteSchwiftyLogo} alt="" className="schwiftylogoimg" />
+            </a>
           </div>
           {/* <div className="profile">
             <TextField placeholder="Search Tabs...">

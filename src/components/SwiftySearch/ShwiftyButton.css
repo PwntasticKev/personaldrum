@@ -1,0 +1,33 @@
+.edit {
+  position: absolute;
+  right: 17%;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 5px;
+  /* display: none; */
+}
+
+.dot-container {
+  display: flex;
+  flex-direction: column;
+  height: 1rem;
+  position: absolute;
+  top: 6px;
+  left: 17.25px;
+}
+
+.dot {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.updatedivs {
+  display: flex;
+  align-items: center;
+}
+
+.addicon {
+  display: "flex";
+  color: "white";
+}

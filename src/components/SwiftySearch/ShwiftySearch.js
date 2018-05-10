@@ -2,17 +2,60 @@ import React, { Component } from "react"
 import Header1 from "../LoggedInHomepage/Header1/Header1"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
-import { getTabs } from "../../ducks/reducer"
-import "./ShwiftySearch.css"
+import { getTabs, deleteTab } from "../../ducks/reducer"
 import ShwiftyButton from "./ShwiftyButton"
 import TextField from "material-ui/TextField"
+import Button from "material-ui/Button"
+import DeleteIcon from "@material-ui/icons/Delete"
+import Tooltip from "material-ui/Tooltip"
+import IconButton from "material-ui/IconButton"
+import { withStyles } from "material-ui/styles"
+import "./ShwiftySearch.css"
+import axios from "axios"
+
+const styles = theme => ({
+  fab: {
+    margin: theme.spacing.unit * 1,
+    background: "#ff3b3f",
+    height: "40px",
+    width: "40px",
+    color: "white"
+  }
+})
 
 class ShwiftySearch extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      editSongs: false
+    }
+  }
   componentDidMount() {
     this.props.getTabs("")
   }
 
+  editButtonOpen = () => {
+    if (this.state.editSongs === false) {
+      this.setState({
+        editSongs: true
+      })
+    } else if (this.state.editSongs === true) {
+      this.setState({
+        editSongs: false
+      })
+    }
+  }
+  editButtonClose = () => {
+    this.setState({ editSongs: false })
+  }
+
+  updateTab = () => {
+    console.log("the update button")
+  }
+
   render() {
+    const { classes } = this.props
+
     const tabinfo = this.props.totalTabs.map(obj => {
       return (
         <div className="card">
@@ -27,8 +70,29 @@ class ShwiftySearch extends Component {
               <div>
                 <div>{obj.album}</div>
               </div>
-              <div className="albumimg">
-                {<img src={obj.songimg} alt="`img no work`" />}
+            </div>
+            <div className="albumimg">
+              {<img src={obj.songimg} alt="`img no work`" />}
+              <div
+                className="edit"
+                style={{ display: this.state.editSongs ? "block" : "none" }}
+              >
+                <div className="updatedivs">
+                  <Tooltip id="tooltip-icon" title="Delete">
+                    <IconButton aria-label="Delete">
+                      <DeleteIcon
+                        onClick={_ =>
+                          this.props
+                            .deleteTab(obj.id)
+                            .then(this.props.getTabs())
+                        }
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <div>
+                    <button onClick={this.updateTab}>Edit</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -56,15 +120,33 @@ class ShwiftySearch extends Component {
               }
             />
           </div>
-          <ShwiftyButton />
+          <div className="button-container">
+            <ShwiftyButton />
+            <div>
+              <Tooltip id="tooltip-fab" title="Edit Songs">
+                <Button
+                  id="create-tab-button"
+                  variant="fab"
+                  className={classes.fab}
+                  onClick={this.editButtonOpen}
+                >
+                  <div className="dot-container">
+                    <div className="dot">.</div>
+                    <div className="dot">.</div>
+                    <div className="dot">.</div>
+                  </div>
+                </Button>
+              </Tooltip>
+            </div>
+          </div>
         </div>
         <div className="description">
           <div className="song">Song</div>
           <div>Artist</div>
           <div className="album-cover-description">
             <div className="album-description">Album</div>
-            <div>Album Cover</div>
           </div>
+          <div>Album Cover</div>
         </div>
         <div>{this.props.getTabs}</div>
         <div className="card-container">{tabinfo}</div>
@@ -77,4 +159,6 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps, { getTabs })(ShwiftySearch)
+export default connect(mapStateToProps, { getTabs, deleteTab })(
+  withStyles(styles)(ShwiftySearch)
+)

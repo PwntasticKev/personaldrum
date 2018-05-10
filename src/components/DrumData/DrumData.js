@@ -29,6 +29,16 @@ class DrumData extends Component {
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
       ]
     }
@@ -131,6 +141,126 @@ class DrumData extends Component {
             note1={this.state.measures[9][1]}
             note2={this.state.measures[9][2]}
             note3={this.state.measures[9][3]}
+          />
+          <Measures
+            note0={this.state.measures[10][0]}
+            note1={this.state.measures[10][1]}
+            note2={this.state.measures[10][2]}
+            note3={this.state.measures[10][3]}
+          />
+          <Measures
+            note0={this.state.measures[11][0]}
+            note1={this.state.measures[11][1]}
+            note2={this.state.measures[11][2]}
+            note3={this.state.measures[11][3]}
+          />
+          <Measures
+            note0={this.state.measures[12][0]}
+            note1={this.state.measures[12][1]}
+            note2={this.state.measures[12][2]}
+            note3={this.state.measures[12][3]}
+          />
+          <Measures
+            note0={this.state.measures[13][0]}
+            note1={this.state.measures[13][1]}
+            note2={this.state.measures[13][2]}
+            note3={this.state.measures[13][3]}
+          />
+          <Measures
+            note0={this.state.measures[14][0]}
+            note1={this.state.measures[14][1]}
+            note2={this.state.measures[14][2]}
+            note3={this.state.measures[14][3]}
+          />
+          <Measures
+            note0={this.state.measures[15][0]}
+            note1={this.state.measures[15][1]}
+            note2={this.state.measures[15][2]}
+            note3={this.state.measures[15][3]}
+          />
+          <Measures
+            note0={this.state.measures[16][0]}
+            note1={this.state.measures[16][1]}
+            note2={this.state.measures[16][2]}
+            note3={this.state.measures[16][3]}
+          />
+          <Measures
+            note0={this.state.measures[17][0]}
+            note1={this.state.measures[17][1]}
+            note2={this.state.measures[17][2]}
+            note3={this.state.measures[17][3]}
+          />
+          <Measures
+            note0={this.state.measures[18][0]}
+            note1={this.state.measures[18][1]}
+            note2={this.state.measures[18][2]}
+            note3={this.state.measures[18][3]}
+          />
+          <Measures
+            note0={this.state.measures[19][0]}
+            note1={this.state.measures[19][1]}
+            note2={this.state.measures[19][2]}
+            note3={this.state.measures[19][3]}
+          />
+          <Measures
+            note0={this.state.measures[20][0]}
+            note1={this.state.measures[20][1]}
+            note2={this.state.measures[20][2]}
+            note3={this.state.measures[20][3]}
+          />
+          <Measures
+            note0={this.state.measures[21][0]}
+            note1={this.state.measures[21][1]}
+            note2={this.state.measures[21][2]}
+            note3={this.state.measures[21][3]}
+          />
+          <Measures
+            note0={this.state.measures[22][0]}
+            note1={this.state.measures[22][1]}
+            note2={this.state.measures[22][2]}
+            note3={this.state.measures[22][3]}
+          />
+          <Measures
+            note0={this.state.measures[23][0]}
+            note1={this.state.measures[23][1]}
+            note2={this.state.measures[23][2]}
+            note3={this.state.measures[23][3]}
+          />
+          <Measures
+            note0={this.state.measures[24][0]}
+            note1={this.state.measures[24][1]}
+            note2={this.state.measures[24][2]}
+            note3={this.state.measures[24][3]}
+          />
+          <Measures
+            note0={this.state.measures[25][0]}
+            note1={this.state.measures[25][1]}
+            note2={this.state.measures[25][2]}
+            note3={this.state.measures[25][3]}
+          />
+          <Measures
+            note0={this.state.measures[26][0]}
+            note1={this.state.measures[26][1]}
+            note2={this.state.measures[26][2]}
+            note3={this.state.measures[26][3]}
+          />
+          <Measures
+            note0={this.state.measures[27][0]}
+            note1={this.state.measures[27][1]}
+            note2={this.state.measures[27][2]}
+            note3={this.state.measures[27][3]}
+          />
+          <Measures
+            note0={this.state.measures[28][0]}
+            note1={this.state.measures[28][1]}
+            note2={this.state.measures[28][2]}
+            note3={this.state.measures[28][3]}
+          />
+          <Measures
+            note0={this.state.measures[29][0]}
+            note1={this.state.measures[29][1]}
+            note2={this.state.measures[29][2]}
+            note3={this.state.measures[29][3]}
           />
         </div>
       </div>

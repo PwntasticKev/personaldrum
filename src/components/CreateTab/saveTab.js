@@ -119,7 +119,7 @@ export default class SaveTab extends React.Component {
   }
 
   handleClickOpen = () => {
-    this.setState({ open: true })
+    this.setState({ open: true || false ? true : false })
   }
 
   handleClose = () => {

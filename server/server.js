@@ -92,7 +92,7 @@ Board.on("ready", () => {
   app.get(
     "/auth/callback",
     passport.authenticate("auth0", {
-      successRedirect: "http://localhost:3000/#/home",
+      successRedirect: "http://localhost:3000/#/home", //digital ocean. change for hosting. change anywehre it says local host
       failureRedirect: "http://localhost:3000/#/"
     })
   )
@@ -152,6 +152,14 @@ Board.on("ready", () => {
         res.status(200).send(sheetMusic)
       })
       .catch(console.log)
+  })
+
+  app.delete(`/deletetab/:id`, (req, res) => {
+    console.log("this is it", req.params.id)
+    const db = app.get("db")
+    db.delete_tab([req.params.id]).then(deletedTab => {
+      res.status(200).send(deletedTab)
+    })
   })
 
   // AWS3 stuff
