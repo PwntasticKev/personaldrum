@@ -38,11 +38,9 @@ class Header1 extends Component {
 
         {/* {this.props.user ?  */}
         <div className="info-container">
+          <div>{/* <SwipeableTemporaryDrawer /> */}</div>
           <div>
-            <SwipeableTemporaryDrawer />
-          </div>
-          <div>
-            <a href="/">
+            <a href="/home">
               <img src={WhiteSchwiftyLogo} alt="" className="schwiftylogoimg" />
             </a>
           </div>
@@ -65,7 +63,7 @@ class Header1 extends Component {
         {/* : 
           <div className="info-container">
             <h1>SIGN IN DOE</h1>
-            <Link to="/">
+            <Link to="/home">
               <button>Log in</button>
             </Link>
           </div>} */}

@@ -11,6 +11,7 @@ import Tooltip from "material-ui/Tooltip"
 import IconButton from "material-ui/IconButton"
 import { withStyles } from "material-ui/styles"
 import "./ShwiftySearch.css"
+import EditButton from "./EditButton"
 import axios from "axios"
 
 const styles = theme => ({
@@ -28,7 +29,7 @@ class ShwiftySearch extends Component {
     super(props)
     this.state = {
       editSongs: false,
-      editButton: true
+      editButton: false
     }
   }
   componentDidMount() {
@@ -50,23 +51,11 @@ class ShwiftySearch extends Component {
     this.setState({ editSongs: false })
   }
 
-  editButtonTrue = () => {
+  editButton = () => {
     this.setState({
       editButton: true
     })
-  }
-  editButtonFalse = () => {
-    this.setState({
-      editButton: false
-    })
-  }
-
-  updateYourTab() {
-    console.log("updateyourtab!!")
-  }
-
-  saveTab() {
-    console.log("saved tab!! hit")
+    console.log("the update button")
   }
 
   render() {
@@ -99,23 +88,8 @@ class ShwiftySearch extends Component {
                       <DeleteIcon onClick={_ => this.props.deleteTab(obj.id)} />
                     </IconButton>
                   </Tooltip>
-                  <div>
-                    <button
-                      onClick={_ => this.editButtonFalse()}
-                      style={{
-                        display: this.state.editButton ? "block" : "none"
-                      }}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={_ => this.editButtonTrue() && this.saveTab()}
-                      style={{
-                        display: this.state.editButton ? "none" : "block"
-                      }}
-                    >
-                      Save
-                    </button>
+                  <div className="search-edit-container">
+                    <EditButton />
                   </div>
                 </div>
               </div>

@@ -162,6 +162,13 @@ Board.on("ready", () => {
     })
   })
 
+  app.put(`/updateTab/:id`, (req, res) => {
+    const db = app.get("db")
+    db.updateTab([req.params.id]).then(updatedTab => {
+      res.status(200).send(updatedTab)
+    })
+  })
+
   // AWS3 stuff
   S3(app)
   //aws3 stuff

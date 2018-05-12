@@ -107,3 +107,27 @@
 .button-container {
   display: flex;
 }
+
+.editimg img {
+  width: 20px;
+}
+
+.button-container {
+  border-radius: 100%;
+  min-width: 0;
+}
+
+.search-edit-container {
+  width: 10px;
+}
+
+.edit-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.cancel-update {
+  justify-content: center;
+}

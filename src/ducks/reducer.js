@@ -22,6 +22,7 @@ const ALBUM_NAME = "ALBUM_NAME"
 const DESCRIPTION = "DESCRIPTION"
 const GET_URI = "GET_URI"
 const DELETE_TAB = "DELETE_TAB"
+const UPDATE_TAB = "UPDATE_TAB"
 
 // action creators
 export function getUserInfo() {
@@ -33,6 +34,17 @@ export function getUserInfo() {
   return {
     type: GET_USER_INFO,
     payload: userInfo
+  }
+}
+
+export function updateTab(id) {
+  console.log("this is the id im looking for", id)
+  const updateTabs = axios.put(`/updateTabs/${id}`).then(res => {
+    return res.data
+  })
+  return {
+    type: UPDATE_TAB,
+    payload: updateTabs
   }
 }
 
@@ -98,6 +110,9 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { totalTabs: action.payload })
 
     case DELETE_TAB + "_FULFILLED":
+      return Object.assign({}, state, { totalTabs: action.payload })
+
+    case UPDATE_TAB + "_FULFILLED":
       return Object.assign({}, state, { totalTabs: action.payload })
 
     case SET_TEMPO:
