@@ -34,13 +34,13 @@ class Header1 extends Component {
   render() {
     return (
       <div>
-        {this.state.isSearching ? <Redirect to="/search" /> : null}
+        {this.state.isSearching ? <Redirect to="/home" /> : null}
 
         {/* {this.props.user ?  */}
         <div className="info-container">
           <div>{/* <SwipeableTemporaryDrawer /> */}</div>
           <div>
-            <a href="/home">
+            <a href="/#/home">
               <img src={WhiteSchwiftyLogo} alt="" className="schwiftylogoimg" />
             </a>
           </div>
