@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* background: url("../notesimg/musiclines.svg");
+  background-repeat: no-repeat;
+  background-size: cover; */
   /* display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: 3rem; */
@@ -9,11 +12,12 @@
 
 .measures-layout {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   grid-row-gap: 4rem;
 }
 
 .DrumData {
   padding: 0 5rem;
+  position: relative;
 }

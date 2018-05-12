@@ -10,6 +10,7 @@ import Button from "material-ui/Button"
 import DrumData from "../DrumData/DrumData"
 import SaveTab from "../CreateTab/saveTab"
 import Sortable from "sortablejs"
+import musiclines from "../notesimg/musiclines.svg"
 
 function TabContainer(props) {
   return (
@@ -127,17 +128,16 @@ class Arduino extends React.Component {
         {/* <div>play your shwifty groove!</div> */}
 
         <div id="sheetMusic">
-          <div className="music">
-            <div className="snare">
-              <DrumData />
-            </div>
-            {/* <div className="bar">
-              <div className="e" />
+          <div className="snare">
+            <DrumData />
+            <div className="bar">
+              <img src={musiclines} alt="" />
+              {/* <div className="e" />
               <div className="g" />
               <div className="b" />
               <div className="d" />
-              <div className="f" />
-            </div> */}
+              <div className="f" /> */}
+            </div>
           </div>
         </div>
 

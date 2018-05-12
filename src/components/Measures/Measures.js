@@ -1,8 +1,7 @@
 import React, { Component } from "react"
-import twosnare from "../notesimg/2snare.svg"
 import one from "../notesimg/juansnare.svg"
 import three from "../notesimg/2snare.svg"
-import two from "../notesimg/3snare.svg"
+import two from "../notesimg/double.svg"
 import four from "../notesimg/4snare.svg"
 
 export default class Measures extends Component {
@@ -38,7 +37,7 @@ export default class Measures extends Component {
       case "0 0 1 1":
         return (
           <div className="notetwo">
-            <img src={twosnare} alt="" />
+            <img src={two} alt="" />
           </div>
         )
 
@@ -58,8 +57,8 @@ export default class Measures extends Component {
 
       case "0 1 1 0":
         return (
-          <div className="notefasttwo">
-            <img src={twosnare} alt="" />
+          <div className="notetwo">
+            <img src={two} alt="" />
           </div>
         )
 

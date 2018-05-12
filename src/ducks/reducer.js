@@ -23,6 +23,7 @@ const DESCRIPTION = "DESCRIPTION"
 const GET_URI = "GET_URI"
 const DELETE_TAB = "DELETE_TAB"
 const UPDATE_TAB = "UPDATE_TAB"
+const GET_SONG = "GET_SONG"
 
 // action creators
 export function getUserInfo() {
@@ -45,6 +46,16 @@ export function updateTab(id) {
   return {
     type: UPDATE_TAB,
     payload: updateTabs
+  }
+}
+
+export function getinfo(id) {
+  const getSong = axios.get(`/song${id}`).then(res => {
+    return res.data
+  })
+  return {
+    type: GET_SONG,
+    payload: getSong
   }
 }
 

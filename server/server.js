@@ -169,6 +169,13 @@ Board.on("ready", () => {
     })
   })
 
+  // app.get(`song/:id`, (req, res) => {
+  //   const db = app.get("db")
+  //   db.selectSong([req.params.id]).then(song => {
+  //     res.status(200).send(song)
+  //   })
+  // })
+
   // AWS3 stuff
   S3(app)
   //aws3 stuff

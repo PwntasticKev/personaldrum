@@ -41,11 +41,12 @@ li {
 }
 
 .bar {
-  position: relative;
-  top: -7.68rem;
-  z-index: 2;
+  position: absolute;
+  top: 0;
+  z-index: 0;
   opacity: 0.5;
   padding: 0 3rem;
+  width: 90%;
 }
 
 .e,
@@ -55,6 +56,10 @@ li {
 .f {
   border-top: 2px solid gray;
   margin-bottom: 10px;
+}
+
+#sheetMusic {
+  position: relative;
 }
 
 .bottom-container {

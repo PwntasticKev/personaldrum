@@ -158,12 +158,6 @@ export default class SaveTab extends React.Component {
                 />
                 <TextField
                   onChange={e => this.songInfo(e)}
-                  label="Description"
-                  margin="normal"
-                  name="description"
-                />
-                <TextField
-                  onChange={e => this.songInfo(e)}
                   label="Artist Name"
                   margin="normal"
                   name="artist"
