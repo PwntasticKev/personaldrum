@@ -163,18 +163,20 @@ Board.on("ready", () => {
   })
 
   app.put(`/updateTab/:id`, (req, res) => {
+    const { id } = req.params
+    const { songName, artist, albumName } = req.body
     const db = app.get("db")
-    db.updateTab([req.params.id]).then(updatedTab => {
+    db.updateTab([id, songName, artist, albumName]).then(updatedTab => {
       res.status(200).send(updatedTab)
     })
   })
 
-  // app.get(`song/:id`, (req, res) => {
-  //   const db = app.get("db")
-  //   db.selectSong([req.params.id]).then(song => {
-  //     res.status(200).send(song)
-  //   })
-  // })
+  app.get(`/song/:id`, (req, res) => {
+    const db = app.get("db")
+    db.selectSong([req.params.id]).then(song => {
+      res.status(200).send(song)
+    })
+  })
 
   // AWS3 stuff
   S3(app)

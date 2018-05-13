@@ -1,4 +1,4 @@
-select * from drumtabs;
 update drumtabs 
-SET songname = '$1', album = '$2', artist = '$3'
+SET songname = $2, album = $3, artist = $4
 WHERE id = $1;
+select * from drumtabs;

@@ -113,7 +113,16 @@ class EditButton extends React.Component {
             <Button onClick={this.handleClose} color="first">
               Cancel
             </Button>
-            <Button onClick={_ => this.props.updateTab() && this.handleClose()}>
+            <Button
+              onClick={_ =>
+                this.props.updateTab(
+                  this.props.id,
+                  this.state.songName,
+                  this.state.artistName,
+                  this.state.albumName
+                ) && this.handleClose()
+              }
+            >
               Update Groove
             </Button>
           </DialogActions>

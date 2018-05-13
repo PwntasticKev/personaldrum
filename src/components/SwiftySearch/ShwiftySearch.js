@@ -14,6 +14,7 @@ import "./ShwiftySearch.css"
 import EditButton from "./EditButton"
 import axios from "axios"
 import GSAP from "react-gsap-enhancer" //i will come back to you....
+import gsap from "gsap-react-plugin"
 
 const styles = theme => ({
   fab: {
@@ -22,8 +23,19 @@ const styles = theme => ({
     height: "40px",
     width: "40px",
     color: "white"
+  },
+  deleteButton: {
+    color: "black"
   }
 })
+
+// function moveAnimation({ target }) {
+//   //just ES6 syntax sugar
+//   var footer = target.find({ type: "footer" })
+//   var buttons = footer.findAll({ type: "button" })
+// }
+
+// TweenMax.to()
 
 class ShwiftySearch extends Component {
   constructor(props) {
@@ -86,11 +98,14 @@ class ShwiftySearch extends Component {
                 <div className="updatedivs">
                   <Tooltip id="tooltip-icon" title="Delete">
                     <IconButton aria-label="Delete">
-                      <DeleteIcon onClick={_ => this.props.deleteTab(obj.id)} />
+                      <DeleteIcon
+                        className={classes.deleteButton}
+                        onClick={_ => this.props.deleteTab(obj.id)}
+                      />
                     </IconButton>
                   </Tooltip>
                   <div className="search-edit-container">
-                    <EditButton />
+                    <EditButton id={obj.id} />
                   </div>
                 </div>
               </div>

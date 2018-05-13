@@ -1,20 +1,21 @@
 .noteone img {
-  width: 20rem;
+  width: 2.5rem;
 }
 
 .notetwo img {
-  width: 20rem;
+  width: 2.5rem;
 }
 
 .notethree img {
-  width: 20rem;
+  width: 2.5rem;
 }
 
 .notefour img {
-  width: 20rem;
+  width: 2.5rem;
 }
 
 .measure {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  border-right: 1px solid gray;
 }

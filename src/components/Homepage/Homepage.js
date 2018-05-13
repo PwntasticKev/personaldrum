@@ -1,27 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 // import { Link } from 'react-router-dom'
-import './Homepage.css'
+import "./Homepage.css"
+import whiteschwifty from "../notesimg/whiteschwifty.svg"
+import Button from "material-ui/Button"
 
 export default class Homepage extends Component {
-
   render() {
-    const {
-      REACT_APP_LOGIN
-    } = process.env
-    
-    
-    return <div>
-          <div className="recreate">Inspirational Shi</div>
+    const { REACT_APP_LOGIN } = process.env
+
+    return (
+      <div>
         <div className="main-page">
           <div className="login">
-            <div>SHWIFTY LOGO</div>
-            <div>
+            <img src={whiteschwifty} alt="" />
+            <div className="login-container">
               <a href={REACT_APP_LOGIN}>
-                <button>Login</button>
+                <Button>Login</Button>
               </a>
             </div>
           </div>
         </div>
       </div>
+    )
   }
 }

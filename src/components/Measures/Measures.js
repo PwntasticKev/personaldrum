@@ -3,6 +3,7 @@ import one from "../notesimg/juansnare.svg"
 import three from "../notesimg/2snare.svg"
 import two from "../notesimg/double.svg"
 import four from "../notesimg/4snare.svg"
+import "./Measures.css"
 
 export default class Measures extends Component {
   constructor() {

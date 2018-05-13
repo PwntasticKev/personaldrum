@@ -44,8 +44,12 @@ class Header1 extends Component {
               <img src={WhiteSchwiftyLogo} alt="" className="schwiftylogoimg" />
             </a>
           </div>
-          {/* <div className="profile">
-            <TextField placeholder="Search Tabs...">
+          <div className="profile">
+            <TextField
+              placeholder="Search Tabs..."
+              onKeyDown={e => this.search(e)}
+              onChange={e => this.props.searchVal(e.target.value)}
+            >
               <input
                 type="text"
                 placeholder="Search..."
@@ -58,7 +62,7 @@ class Header1 extends Component {
               className="avatar"
               src={this.props.user && this.props.user.img}
             />
-          </div> */}
+          </div>
         </div>
         {/* : 
           <div className="info-container">

@@ -9,6 +9,7 @@ const initialState = {
   songName: "",
   albumName: "",
   description: "",
+  artist: "",
   uri: ""
 }
 
@@ -38,18 +39,20 @@ export function getUserInfo() {
   }
 }
 
-export function updateTab(id) {
+export function updateTab(id, songName, artist, albumName) {
   console.log("this is the id im looking for", id)
-  const updateTabs = axios.put(`/updateTabs/${id}`).then(res => {
-    return res.data
-  })
+  const updateTabs = axios
+    .put(`/updateTab/${id}`, { songName, artist, albumName })
+    .then(res => {
+      return res.data
+    })
   return {
     type: UPDATE_TAB,
     payload: updateTabs
   }
 }
 
-export function getinfo(id) {
+export function getSong(id) {
   const getSong = axios.get(`/song${id}`).then(res => {
     return res.data
   })
@@ -117,6 +120,10 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { uri: action.payload })
 
     case GET_TABS + "_FULFILLED":
+      console.log(action.payload)
+      return Object.assign({}, state, { totalTabs: action.payload })
+
+    case GET_SONG + "_FULFILLED":
       console.log(action.payload)
       return Object.assign({}, state, { totalTabs: action.payload })
 

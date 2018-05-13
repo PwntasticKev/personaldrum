@@ -2,9 +2,10 @@
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   margin-top: 1rem;
+  background: #8686;
 }
 
-.profile-pic img{
+.profile-pic img {
   width: 80px;
   border-radius: 100%;
 }

@@ -130,14 +130,14 @@ class Arduino extends React.Component {
         <div id="sheetMusic">
           <div className="snare">
             <DrumData />
-            <div className="bar">
+            {/* <div className="bar">
               <img src={musiclines} alt="" />
-              {/* <div className="e" />
+              <div className="e" />
               <div className="g" />
               <div className="b" />
               <div className="d" />
-              <div className="f" /> */}
-            </div>
+              <div className="f" />
+            </div> */}
           </div>
         </div>
 
