@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import one from "../notesimg/juansnare.svg"
-import three from "../notesimg/2snare.svg"
-import two from "../notesimg/double.svg"
+import three from "../notesimg/3snare.svg"
+import two from "../notesimg/2snare.svg"
 import four from "../notesimg/4snare.svg"
+import rest from "../notesimg/rest.png"
 import "./Measures.css"
 
 export default class Measures extends Component {
@@ -22,6 +23,12 @@ export default class Measures extends Component {
     let str = passArr.join(" ")
 
     switch (str) {
+      case "0 0 0 0":
+        return (
+          <div className="rest">
+            <img src={rest} alt="" />
+          </div>
+        )
       case "0 0 0 1":
         return (
           <div className="noteone">

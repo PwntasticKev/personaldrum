@@ -38,6 +38,16 @@ const styles = theme => ({
   },
   appBarContainer: {
     boxShadow: "none"
+  },
+  saveTabButton: {
+    backgroundColor: "ghostwhite",
+    border: "2px solid #FF3B3F",
+    textTransform: "none",
+    letterSpacing: ".5px",
+    "&:hover": {
+      backgroundColor: "#FF3B3F",
+      color: "ghostwhite"
+    }
   }
 })
 
@@ -142,8 +152,8 @@ class Arduino extends React.Component {
         </div>
 
         <div className="bottom-container">
-          <Button>Share</Button>
-          <SaveTab />
+          <Button className={classes.saveTabButton}>Share</Button>
+          <SaveTab className={classes.saveTabButton} />
         </div>
       </div>
     )

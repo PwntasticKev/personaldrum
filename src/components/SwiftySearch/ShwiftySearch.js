@@ -12,9 +12,8 @@ import IconButton from "material-ui/IconButton"
 import { withStyles } from "material-ui/styles"
 import "./ShwiftySearch.css"
 import EditButton from "./EditButton"
-import axios from "axios"
-import GSAP from "react-gsap-enhancer" //i will come back to you....
-import gsap from "gsap-react-plugin"
+import TransitionGroup from "react-transition-group/TransitionGroup"
+import { TweenMax, Elastic } from "gsap"
 
 const styles = theme => ({
   fab: {
@@ -47,6 +46,11 @@ class ShwiftySearch extends Component {
   }
   componentDidMount() {
     this.props.getTabs("")
+    // this.mutateEdit()
+  }
+
+  mutateEdit() {
+    TweenMax.to(".dot-container", 2, { transform: "rotate(360deg)" })
   }
 
   editButtonOpen = () => {
@@ -59,6 +63,7 @@ class ShwiftySearch extends Component {
         editSongs: false
       })
     }
+    this.mutateEdit()
   }
   editButtonClose = () => {
     this.setState({ editSongs: false })
@@ -143,7 +148,7 @@ class ShwiftySearch extends Component {
                   id="create-tab-button"
                   variant="fab"
                   className={classes.fab}
-                  onClick={this.editButtonOpen}
+                  onClick={_ => this.editButtonOpen()}
                 >
                   <div className="dot-container">
                     <div className="dot">.</div>

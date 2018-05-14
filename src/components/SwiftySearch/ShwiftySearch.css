@@ -54,7 +54,7 @@
 
 .description {
   display: grid;
-  grid-template-columns: 2.5fr 0.75fr 1fr 1fr;
+  grid-template-columns: 4fr 1fr 1.8fr 1fr;
   width: 54%;
   margin: auto;
   border-bottom: 1px solid lightgray;

@@ -10,16 +10,61 @@
 }
 
 .login {
-  border: 2px solid ghostwhite;
+  border: 1.75px solid ghostwhite;
   padding: 2rem;
   border-radius: 4%;
   box-shadow: -1px 1px 13px 0px rgba(0, 0, 0, 8);
-  min-height: 30%;
-  min-width: 30%;
+  min-height: 45%;
+  min-width: 27%;
+  background: ghostwhite;
+  position: absolute;
+  z-index: 3;
 }
 
 .login-container {
   display: flex;
   justify-content: center;
   padding-top: 26%;
+}
+
+.fun-dots {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 156px;
+  z-index: 1;
+}
+
+.dot1 {
+  margin-right: 1rem;
+  color: ghostwhite;
+}
+
+.home-login-button {
+  display: inline-block;
+  background: ghostwhite;
+  color: #ff3b3f;
+  text-transform: uppercase;
+  padding: 20px 80px;
+  border-radius: 5px;
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all ease-in-out 300ms;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.home-login-button:hover {
+  box-shadow: 0px 37px 20px -15px rgba(0, 0, 0, 0.2);
+  transform: translate(0px, -10px);
+}
+
+.welcome {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  border-bottom: 1px solid ghostwhite;
+  font-size: 1.5rem;
+}
+.pinkschwifty {
+  padding-top: 2rem;
 }

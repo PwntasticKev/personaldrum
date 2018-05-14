@@ -39,6 +39,8 @@ class DrumData extends Component {
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
         [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
       ]
     }
@@ -261,6 +263,18 @@ class DrumData extends Component {
             note1={this.state.measures[29][1]}
             note2={this.state.measures[29][2]}
             note3={this.state.measures[29][3]}
+          />
+          <Measures
+            note0={this.state.measures[30][0]}
+            note1={this.state.measures[30][1]}
+            note2={this.state.measures[30][2]}
+            note3={this.state.measures[30][3]}
+          />
+          <Measures
+            note0={this.state.measures[31][0]}
+            note1={this.state.measures[31][1]}
+            note2={this.state.measures[31][2]}
+            note3={this.state.measures[31][3]}
           />
         </div>
       </div>
