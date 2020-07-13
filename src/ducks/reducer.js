@@ -20,7 +20,6 @@ const UPDATE_SEARCH_VAL = "UPDATE_SEARCH_VAL"
 const SET_TEMPO = "SET_TEMPO"
 const SONGNAME = "SONG_NAME"
 const ALBUM_NAME = "ALBUM_NAME"
-const DESCRIPTION = "DESCRIPTION"
 const GET_URI = "GET_URI"
 const DELETE_TAB = "DELETE_TAB"
 const UPDATE_TAB = "UPDATE_TAB"
@@ -53,7 +52,9 @@ export function updateTab(id, songName, artist, albumName) {
 }
 
 export function getSong(id) {
-  const getSong = axios.get(`/song${id}`).then(res => {
+  console.log("this is being hit", id)
+  const getSong = axios.get(`/song/${id}`).then(res => {
+    console.log("getting stuff back", res.data)
     return res.data
   })
   return {
@@ -124,8 +125,10 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { totalTabs: action.payload })
 
     case GET_SONG + "_FULFILLED":
-      console.log(action.payload)
-      return Object.assign({}, state, { totalTabs: action.payload })
+      console.log("this action.payload", action.payload)
+      return Object.assign({}, state, {
+        totalTabs: action.payload
+      })
 
     case DELETE_TAB + "_FULFILLED":
       return Object.assign({}, state, { totalTabs: action.payload })

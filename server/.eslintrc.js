@@ -12,6 +12,7 @@ module.exports = {
       }
     ],
     "babel/new-cap": "off",
-    "max-statements": "off"
+    "max-statements": "off",
+    "no-bitwise": "off"
   }
 }

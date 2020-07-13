@@ -11,6 +11,8 @@ import { withStyles } from "material-ui/styles"
 import { connect } from "react-redux"
 import { updateTab, getTabs } from "../../ducks/reducer"
 
+/* <img src={this.props.user && this.props.user.img} alt="" /> */
+
 const styles = theme => ({
   editButton: {
     margin: theme.spacing.unit * 1,
@@ -105,7 +107,7 @@ class EditButton extends React.Component {
                 id="name"
                 label="Artist"
                 onChange={e => this.songInfo(e)}
-                name="artistName"
+                name="arrowa"
               />
             </DialogContent>
           </div>
@@ -135,6 +137,7 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps, { updateTab, getTabs })(
-  withStyles(styles)(EditButton)
-)
+export default connect(
+  mapStateToProps,
+  { updateTab, getTabs }
+)(withStyles(styles)(EditButton))

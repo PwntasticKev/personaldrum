@@ -1,2 +1,2 @@
-SELECT id, songname, songimg, album FROM drumtabs
-WHERE id = $1;
+SELECT id, songname, artist, songimg, album FROM drumtabs
+WHERE id = $1

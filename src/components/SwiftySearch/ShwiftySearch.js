@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Header1 from "../LoggedInHomepage/Header1/Header1"
+import Header1 from "../Header1/Header1"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { getTabs, deleteTab } from "../../ducks/reducer"
@@ -12,16 +12,19 @@ import IconButton from "material-ui/IconButton"
 import { withStyles } from "material-ui/styles"
 import "./ShwiftySearch.css"
 import EditButton from "./EditButton"
-import TransitionGroup from "react-transition-group/TransitionGroup"
-import { TweenMax, Elastic } from "gsap"
+import { TweenMax } from "gsap"
 
 const styles = theme => ({
-  fab: {
+  editButton: {
     margin: theme.spacing.unit * 1,
     background: "#ff3b3f",
     height: "40px",
     width: "40px",
-    color: "white"
+    color: "white",
+    "&:hover": {
+      opacity: ".7",
+      background: "#ff3b3f"
+    }
   },
   deleteButton: {
     color: "black"
@@ -147,7 +150,7 @@ class ShwiftySearch extends Component {
                 <Button
                   id="create-tab-button"
                   variant="fab"
-                  className={classes.fab}
+                  className={classes.editButton}
                   onClick={_ => this.editButtonOpen()}
                 >
                   <div className="dot-container">

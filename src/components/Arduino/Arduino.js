@@ -1,5 +1,5 @@
 import React from "react"
-import Header1 from "../LoggedInHomepage/Header1/Header1"
+import Header1 from "../Header1/Header1"
 import { connect } from "react-redux"
 import { setTempo } from "../../ducks/reducer"
 import "./Arduino.css"
@@ -10,7 +10,6 @@ import Button from "material-ui/Button"
 import DrumData from "../DrumData/DrumData"
 import SaveTab from "../CreateTab/saveTab"
 import Sortable from "sortablejs"
-import musiclines from "../notesimg/musiclines.svg"
 
 function TabContainer(props) {
   return (
@@ -40,13 +39,16 @@ const styles = theme => ({
     boxShadow: "none"
   },
   saveTabButton: {
-    backgroundColor: "ghostwhite",
-    border: "2px solid #FF3B3F",
+    border: "2px solid ghostwhite",
     textTransform: "none",
     letterSpacing: ".5px",
+    backgroundColor: "#FF3B3F",
+    color: "ghostwhite",
+    borderRadius: "8px",
     "&:hover": {
       backgroundColor: "#FF3B3F",
-      color: "ghostwhite"
+      color: "ghostwhite",
+      transform: "translate(0px, -5px)"
     }
   }
 })
@@ -153,7 +155,7 @@ class Arduino extends React.Component {
 
         <div className="bottom-container">
           <Button className={classes.saveTabButton}>Share</Button>
-          <SaveTab className={classes.saveTabButton} />
+          <SaveTab />
         </div>
       </div>
     )

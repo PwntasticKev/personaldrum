@@ -1,7 +1,7 @@
 require("dotenv").config()
 const path = require("path")
-const AWS = require("aws-sdk")
 const five = require("johnny-five")
+// const AWS = require("aws-sdk")
 const Board = new five.Board()
 Board.on("ready", () => {
   const express = require("express")
@@ -64,8 +64,7 @@ Board.on("ready", () => {
       (accessToken, refreshToken, extraParams, profile, done) => {
         const { id, displayName, picture } = profile
         const db = app.get("db")
-        db
-          .find_user([id])
+        db.find_user([id])
           .then(async users => {
             if (users[0]) {
               return done(null, users[0])
@@ -144,10 +143,9 @@ Board.on("ready", () => {
   app.get("/sheetMusic/:id", (req, res) => {
     console.log(req.params.id)
     const db = app.get("db")
-    db
-      .selectUri(req.params.id)
+    db.selectUri(req.params.id)
       .then(sheetMusic => {
-        console.log(sheetMusic)
+        // console.log(sheetMusic)
 
         res.status(200).send(sheetMusic)
       })
@@ -173,7 +171,12 @@ Board.on("ready", () => {
 
   app.get(`/song/:id`, (req, res) => {
     const db = app.get("db")
-    db.selectSong([req.params.id]).then(song => {
+    const { id } = req.params
+    // const { songName, artist, albumName } = req.body
+    console.log("its getting hit")
+    // console.log(songName, artist, albumName)
+    db.select_song([id]).then(song => {
+      console.log(song, "this is songname")
       res.status(200).send(song)
     })
   })
@@ -181,6 +184,7 @@ Board.on("ready", () => {
   // AWS3 stuff
   S3(app)
   //aws3 stuff
+
   //sockets and arduino code
   io.on("connection", connectionSocket => {
     console.log("Socket on. play!!")
@@ -188,7 +192,7 @@ Board.on("ready", () => {
     let start = false
     const recentHits = []
     let hit = []
-    const play = require("play")
+    // const play = require("play")
     let count = 0
     let measure = 0
     let measureObj = {

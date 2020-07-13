@@ -1,0 +1,25 @@
+.song-name {
+  font-size: 2rem;
+  padding: 2rem 0;
+}
+
+.song-info-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.artist-img-container img {
+  width: 25%;
+}
+
+.artist-img-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.sheetmusicimg img {
+  padding-top: 1rem;
+}

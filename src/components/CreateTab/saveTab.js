@@ -9,6 +9,7 @@ import Dialog, {
 } from "material-ui/Dialog"
 import axios from "axios"
 import html2canvas from "html2canvas"
+import { withStyles } from "material-ui/styles"
 
 function sendToback(state) {
   console.log(state)
@@ -16,7 +17,42 @@ function sendToback(state) {
 
   return axios.post("/api/uploadPhoto", state)
 }
-export default class SaveTab extends React.Component {
+
+const styles = theme => ({
+  saveTabButton: {
+    border: "2px solid ghostwhite",
+    textTransform: "none",
+    letterSpacing: ".5px",
+    backgroundColor: "#FF3B3F",
+    color: "ghostwhite",
+    borderRadius: "8px",
+    "&:hover": {
+      backgroundColor: "#FF3B3F",
+      color: "ghostwhite",
+      transform: "translate(0px, -5px)"
+    }
+  },
+  SaveTabButtons: {
+    textTransform: "none",
+    backgroundColor: "#FF3B3F",
+    color: "ghostwhite",
+    "&:hover": {
+      color: "#FF3B3F",
+      // boxShadow: "0px 37px 20px -15px rgba(0, 0, 0, 0.2)",
+      transform: "translate(0px, -5px)"
+    }
+    // border: "1px solid ghostwhite"
+  },
+  saveButtonContainer: {
+    letterSpacing: ".5px",
+    display: "flex",
+    justifyContent: "center"
+  },
+  textinputs: {
+    baxkgroundColor: "#FF3B3F"
+  }
+})
+class SaveTab extends React.Component {
   state = {
     open: false
   }
@@ -127,9 +163,16 @@ export default class SaveTab extends React.Component {
   }
 
   render() {
+    const { classes } = this.props
+
     return (
-      <div>
-        <Button onClick={this.handleClickOpen}>Save DrumTab</Button>
+      <div className="music-main-container">
+        <Button
+          onClick={this.handleClickOpen}
+          className={classes.saveTabButton}
+        >
+          Save DrumTab
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -143,6 +186,7 @@ export default class SaveTab extends React.Component {
               <DialogContentText />
               <div className="song-album-container">
                 <TextField
+                  className={classes.textinputs}
                   onChange={e => this.songInfo(e)}
                   required
                   id="required"
@@ -151,12 +195,14 @@ export default class SaveTab extends React.Component {
                   name="songName"
                 />
                 <TextField
+                  className={classes.textinputs}
                   onChange={e => this.songInfo(e)}
                   label="Album Name"
                   margin="normal"
                   name="albumName"
                 />
                 <TextField
+                  className={classes.textinputs}
                   onChange={e => this.songInfo(e)}
                   label="Artist Name"
                   margin="normal"
@@ -164,7 +210,14 @@ export default class SaveTab extends React.Component {
                 />
               </div>
               <div className="FileUpload">
-                <input type="file" onChange={this.handlePhoto} />
+                <label class="custom-file-upload">
+                  <input
+                    type="file"
+                    onChange={this.handlePhoto}
+                    className="FileUpload1"
+                  />
+                  Select File
+                </label>
                 <br />
                 {this.state.file && (
                   <img src={this.state.file} alt="" className="file-preview" />
@@ -173,13 +226,22 @@ export default class SaveTab extends React.Component {
               </div>
             </DialogContent>
           </div>
-          <div className="save-cancel">
+          <div className={classes.saveButtonContainer}>
             <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
+              <Button
+                onClick={this.handleClose}
+                color="primary"
+                className={classes.SaveTabButtons}
+              >
                 Cancel
               </Button>
               {/* <Button onClick={this.handleClose} color="primary"> */}
-              <Button onClick={e => this.sendPhoto(e)}>SAVE TAB</Button>
+              <Button
+                onClick={e => this.sendPhoto(e)}
+                className={classes.SaveTabButtons}
+              >
+                Save Tab
+              </Button>
             </DialogActions>
           </div>
         </Dialog>
@@ -187,3 +249,5 @@ export default class SaveTab extends React.Component {
     )
   }
 }
+
+export default withStyles(styles)(SaveTab)

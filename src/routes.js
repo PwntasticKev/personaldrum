@@ -4,7 +4,6 @@ import Homepage from "./components/Homepage/Homepage"
 import Arduino from "./components/Arduino/Arduino"
 import ShwiftySearch from "./components/SwiftySearch/ShwiftySearch"
 import SheetMusic from "./components/SheetMusic/SheetMusic"
-import ScrollableTabsButtonAuto from "./components/CreateTab/CreateTab"
 
 export default (
   <Switch>

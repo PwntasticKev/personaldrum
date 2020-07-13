@@ -72,7 +72,6 @@ li {
   bottom: 0;
   width: 100%;
   justify-content: center;
-  background: ghostwhite;
 }
 
 .notes {
@@ -101,3 +100,28 @@ li {
 #hihat2 img {
   width: 29px;
 } */
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  color: #ff3b3f;
+  /* display: inline-block; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 27%;
+  margin: auto;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+}
+
+.FileUpload {
+  padding: 1rem 7rem;
+  display: flex;
+  flex-direction: column;
+}

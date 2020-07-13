@@ -3,22 +3,23 @@ import PropTypes from "prop-types"
 import { withStyles } from "material-ui/styles"
 import AddIcon from "@material-ui/icons/Add"
 import Button from "material-ui/Button"
-import DeleteIcon from "@material-ui/icons/Delete"
-import IconButton from "material-ui/IconButton"
 import Tooltip from "material-ui/Tooltip"
 import "./ShwiftyButton.css"
 import { Link } from "react-router-dom"
-import Style from "style-it"
 
 const styles = theme => ({
-  fab: {
+  createTabButton: {
     margin: theme.spacing.unit * 1,
     // margin: "1%",
     background: "#ff3b3f",
     height: "40px",
     width: "40px",
     color: "white",
-    listStyleType: "none"
+    listStyleType: "none",
+    "&:hover": {
+      opacity: ".7",
+      background: "#ff3b3f"
+    }
   },
   addicon: {
     color: "white",
@@ -37,7 +38,7 @@ class SimpleTooltips extends Component {
             id="create-tab-button"
             variant="fab"
             aria-label="Add"
-            className={classes.fab}
+            className={classes.createTabButton}
           >
             <Link to={`/create`}>
               <AddIcon className={classes.addicon} />
